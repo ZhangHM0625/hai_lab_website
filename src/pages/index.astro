@@ -1,11 +1,15 @@
 ---
-/** * 【HAIL 实验室主页 - 全平台适配完整版】 */
+/** * 【HAIL 实验室主页 - 全平台适配完整版】 
+ * 开发者：Heming Zhang (RA)
+ */
 const labName = "HAIL";
 const school = "WKWSCI"; 
 const email = "HEMING001@e.ntu.edu.sg"; 
 
-// 自动适配 GitHub Pages 子路径
+// 自动适配 GitHub Pages 子路径，解决 Logo 碎图问题
 const logoImage = `${import.meta.env.BASE_URL}/ntu-logo.png`;
+
+// 目前使用外部链接，如换成本地图片请使用 ${import.meta.env.BASE_URL}/your-image.jpg
 const heroBgImage = "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2000";
 
 const affiliation = "ASIAN COMMUNICATION RESEARCH CENTRE (ACRC) | NTU";
@@ -31,13 +35,14 @@ const slogan = "Advancing Psychologically Aligned and Ethically Designed AI Syst
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
+/* 开启全站平滑滚动 */
 html { scroll-behavior: smooth; }
 
 body {
 font-family: 'Inter', system-ui, -apple-system, sans-serif;
 background: #fff;
 color: var(--text-dark);
-/* 预防移动端溢出 */
+/* 彻底杜绝移动端左右晃动 */
 overflow-x: hidden;
 width: 100%;
 }
@@ -84,10 +89,9 @@ overflow: hidden;
 .hero-bg {
 position: absolute;
 top: 0; left: 0; width: 100%; height: 100%;
-background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2000');
+z-index: 1;
 background-size: cover;
 background-position: center;
-z-index: 1;
 }
 
 @keyframes fadeInUp {
@@ -155,26 +159,24 @@ text-align: left;
 .copy-btn { margin-top: 12px; padding: 10px 32px; background: #1e293b; color: white; border-radius: 40px; font-size: 0.85rem; font-weight: 500; cursor: pointer; border: none; transition: all 0.3s ease; }
 .copy-btn:hover { background: var(--ntu-red); transform: scale(1.05); }
 
-/* --- 5. 手机端专项适配修复 --- */
+/* --- 5. 手机端专项适配修复 (Responsive Mix) --- */
 @media (max-width: 768px) {
-  /* 全局防溢出 */
   body, html { overflow-x: hidden; width: 100%; position: relative; }
 
-  /* 导航栏缩小间距 */
   .navbar { padding: 0.8rem 3%; }
   .university-logo { height: 32px; padding-right: 8px; margin-right: 8px; }
   .lab-info .main-title { font-size: 1.1rem; }
   .nav-links { gap: 10px; }
   .nav-links a { font-size: 0.75rem; white-space: nowrap; }
 
-  /* Hero 区域：等比缩放视觉 */
+  /* 保持横版视觉比例的 vw 单位缩放 */
   .hero { height: 65vh; min-height: 420px; }
   .hero-content { padding: 0 6%; transform: translateY(-10px); }
   .hero-affiliation { font-size: 3.5vw; margin-bottom: 0.5rem; }
   .hero-title { font-size: 9vw; line-height: 1.1; max-width: 95%; margin-bottom: 0.8rem; }
   .hero-slogan { font-size: 3.8vw; line-height: 1.4; max-width: 95%; color: var(--text-hero-dim); }
 
-  /* Research Focus 卡片：横向扁平化比例 */
+  /* 调整卡片比例，使其呈现扁平横条视觉 */
   .area-title { font-size: 6vw; margin-bottom: 8vw; }
   #research-focus { margin: 10vw auto; padding: 0 4%; }
   .focus-card {
@@ -183,7 +185,7 @@ text-align: left;
     margin-bottom: 3vw; 
     min-height: 22vw; 
     display: flex;
-    align-items: center; /* 文字居中 */
+    align-items: center; 
     border-radius: 8px;
   }
   .focus-card h3 { font-size: 4.5vw; line-height: 1.3; }
@@ -192,7 +194,7 @@ text-align: left;
 </head>
 <body>
 <nav class="navbar">
-<a href="#home" class="logo-module">
+<a href={`${import.meta.env.BASE_URL}/#home`} class="logo-module">
 <img src={logoImage} alt="NTU Logo" class="university-logo" />
 <div class="lab-info">
 <span class="main-title">{labName}</span>
@@ -200,7 +202,7 @@ text-align: left;
 </div>
 </a>
 <ul class="nav-links">
-<li><a href={`${import.meta.env.BASE_URL}/`}>Home</a></li>
+<li><a href={`${import.meta.env.BASE_URL}/#home`}>Home</a></li>
 <li><a href="#content-section">Research</a></li>
 <li><a href="/publications">Publications</a></li>
 <li><a href="/people">People</a></li>
