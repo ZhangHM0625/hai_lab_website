@@ -32,6 +32,7 @@ const slogan = "Advancing Psychologically Aligned and Ethically Designed AI Syst
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
+/* 关键点：这里已经开启了平滑滚动效果 */
 html { scroll-behavior: smooth; }
 
 body {
@@ -137,10 +138,11 @@ transition: 0.3s;
 
 /* 3. 内容整合区 */
 #content-section {
-scroll-margin-top: 50px; 
+/* 关键点：设置偏移量，防止导航栏遮挡标题 */
+scroll-margin-top: 80px; 
 }
 
-#research-areas {
+#research-focus {
 max-width: 1050px;
 margin: 60px auto 60px; 
 padding: 0 5%;
@@ -218,7 +220,7 @@ transition: all 0.3s ease;
 </a>
 <ul class="nav-links">
 <li><a href="/">Home</a></li>
-<li><a href="/research">Research</a></li>
+<li><a href="#content-section">Research</a></li>
 <li><a href="/publications">Publications</a></li>
 <li><a href="/people">People</a></li>
 </ul>
@@ -237,7 +239,7 @@ transition: all 0.3s ease;
 </div>
 
 <div id="content-section">
-<main id="research-areas">
+<main id="research-focus">
 <h2 class="area-title">Research Focus</h2>
 <div class="research-flex">
     <div class="focus-card"><h3>AI Agent Design & <br/>User Experience</h3></div>
