@@ -1,15 +1,11 @@
 ---
-/** * 【HAIL 实验室主页 - 全平台适配完整版】 
- * 开发者：Heming Zhang (RA)
- */
+import MainLayout from '../layouts/MainLayout.astro';
+
+/** * 【HAIL 实验室主页 - 首页内容版】 */
 const labName = "HAIL";
-const school = "WKWSCI"; 
 const email = "HEMING001@e.ntu.edu.sg"; 
 
-// 自动适配 GitHub Pages 子路径，解决 Logo 碎图问题
-const logoImage = `${import.meta.env.BASE_URL}/ntu-logo.png`;
-
-// 目前使用外部链接，如换成本地图片请使用 ${import.meta.env.BASE_URL}/your-image.jpg
+// 自动适配 GitHub Pages 子路径
 const heroBgImage = "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2000";
 
 const affiliation = "ASIAN COMMUNICATION RESEARCH CENTRE (ACRC) | NTU";
@@ -17,242 +13,159 @@ const fullLabName = "Human AI-Interaction Lab";
 const slogan = "Advancing Psychologically Aligned and Ethically Designed AI Systems for a Trustworthy Future of Human-AI Interaction.";
 ---
 
-<html lang="zh-cn">
-<head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-<title>{labName} | NTU</title>
-<style>
-:root {
---ntu-red: #ce1126;
---text-dark: #0f172a;
---text-muted: #727c8a;
---text-hero-dim: #bbc5d0;
---bg-footer: #f8fafc;
---hero-height: 85vh;
---hero-gap-bottom: 20px;
---logo-display-height: 45px;
-}
+<MainLayout title="Home">
+  <style>
+    /* --- 1. Hero 区域样式 (保持 PC 端效果) --- */
+    .hero-wrapper { 
+        padding-bottom: 20px; 
+        background: #fff; 
+        scroll-margin-top: 100px; 
+    }
+    .hero {
+      position: relative;
+      height: 85vh;
+      width: 100%;
+      background-color: #050505;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      color: white;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      z-index: 1;
+      background-size: cover;
+      background-position: center;
+    }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
-/* 开启全站平滑滚动 */
-html { scroll-behavior: smooth; }
+    @keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(50px); }
+        to { opacity: 1; transform: translateY(-20px); }
+    }
 
-body {
-font-family: 'Inter', system-ui, -apple-system, sans-serif;
-background: #fff;
-color: var(--text-dark);
-/* 彻底杜绝移动端左右晃动 */
-overflow-x: hidden;
-width: 100%;
-}
+    .hero-content { 
+        position: relative; 
+        z-index: 5; 
+        width: 100%; 
+        max-width: 1200px; 
+        padding: 0 5%; 
+        text-align: left;
+        animation: fadeInUp 1.5s ease-out forwards;
+    }
 
-/* 1. 导航栏 (PC) */
-.navbar {
-display: flex;
-justify-content: space-between;
-align-items: center;
-padding: 1rem 5%;
-background: white;
-position: sticky;
-top: 0;
-z-index: 1000;
-border-bottom: 1px solid #f1f5f9;
-}
-.logo-module { display: flex; align-items: center; text-decoration: none; color: inherit; }
-.university-logo { height: var(--logo-display-height); border-right: 1px solid #e2e8f0; padding-right: 15px; margin-right: 20px; }
-.lab-info { display: flex; flex-direction: column; line-height: 1.1; }
-.lab-info .main-title { font-weight: 800; font-size: 1.6rem; letter-spacing: 0px; }
-.lab-info .sub-title { font-size: 0.8rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase; }
+    .hero-affiliation { font-size: 1rem; font-weight: 700; margin-bottom: 1rem; letter-spacing: 0.05em; color: white; }
+    .hero-title { font-size: 3.5rem; font-weight: 800; line-height: 1.0; margin-bottom: 0.5rem; max-width: 800px; }
+    .hero-slogan { font-size: 1.1rem; color: #bbc5d0; font-weight: 400; line-height: 1.4; max-width: 900px; }
 
-.nav-links { display: flex; gap: 30px; list-style: none; }
-.nav-links a { text-decoration: none; color: #475569; font-weight: 500; font-size: 0.9rem; transition: 0.3s; }
-.nav-links a:hover { color: var(--ntu-red); transform: translateY(-2px); display: inline-block; }
+    .scroll-hint {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 3;
+      text-decoration: none;
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 1.2rem;
+      transition: 0.3s;
+    }
+    .scroll-hint:hover { color: white; transform: translateX(-50%) translateY(5px); }
 
-/* 2. Hero 区域 (PC) */
-.hero-wrapper { 
-    padding-bottom: var(--hero-gap-bottom); 
-    background: #fff; 
-    scroll-margin-top: 100px; 
-}
-.hero {
-position: relative;
-height: var(--hero-height);
-width: 100%;
-background-color: #050505;
-display: flex;
-align-items: center;
-justify-content: flex-start;
-color: white;
-overflow: hidden;
-}
-.hero-bg {
-position: absolute;
-top: 0; left: 0; width: 100%; height: 100%;
-z-index: 1;
-background-size: cover;
-background-position: center;
-}
+    /* --- 2. Research Focus 区域样式 --- */
+    #content-section { scroll-margin-top: 80px; }
+    #research-focus {
+      max-width: 1050px;
+      margin: 60px auto 60px; 
+      padding: 0 5%;
+      text-align: center;
+    }
+    .area-title { font-size: 1.9rem; font-weight: 800; margin-bottom: 60px; text-transform: uppercase; letter-spacing: 1.5px; }
+    .research-flex { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; }
+    .focus-card {
+      flex: 0 1 calc(33.33% - 15px);
+      min-width: 270px;
+      background: linear-gradient(145deg, #ffffff, #f9fafb);
+      padding: 35px 25px;
+      border-radius: 12px;
+      border: 1px solid #f1f5f9;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      text-align: left;
+    }
+    .focus-card:hover { transform: translateY(-8px); border-color: #ce1126; box-shadow: 0 15px 35px rgba(206, 17, 38, 0.08); }
+    .focus-card h3 { font-size: 1rem; color: #0f172a; line-height: 1.4; font-weight: 700; }
 
-@keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(50px); }
-    to { opacity: 1; transform: translateY(-20px); }
-}
+    /* --- 3. Footer 联系区域 (仅包含按钮逻辑) --- */
+    .contact-footer { padding: 40px 5%; text-align: center; background: #f8fafc; border-top: 1px solid #f1f5f9; }
+    .footer-text { font-size: 0.85rem; color: #727c8a; margin-bottom: 10px; line-height: 1.3; }
+    .copy-btn {
+      margin-top: 12px; padding: 10px 32px; background: #1e293b; color: white;
+      border-radius: 40px; font-size: 0.85rem; font-weight: 500; cursor: pointer; border: none; transition: 0.3s;
+    }
+    .copy-btn:hover { background: #ce1126; transform: scale(1.05); }
 
-.hero-content { 
-    position: relative; 
-    z-index: 5; 
-    width: 100%; 
-    max-width: 1200px; 
-    padding: 0 5%; 
-    text-align: left;
-    animation: fadeInUp 1.5s ease-out forwards;
-}
+    /* --- 4. 手机端专项适配修复 --- */
+    @media (max-width: 768px) {
+      .hero { height: 70vh; min-height: 420px; }
+      .hero-title { font-size: 9vw; }
+      .hero-slogan { font-size: 3.5vw; line-height: 1.3; }
+      .area-title { font-size: 6vw; margin-bottom: 8vw; }
+      .focus-card {
+        flex: 0 1 100%; 
+        padding: 5vw 6vw; 
+        min-height: 20vw; 
+        display: flex;
+        align-items: center; 
+        border-radius: 10px;
+      }
+      .focus-card h3 { font-size: 4.5vw; }
+    }
+  </style>
 
-.hero-affiliation { font-size: 1rem; font-weight: 700; margin-bottom: 1rem; letter-spacing: 0.05em; color: white; }
-.hero-title { font-size: 3.5rem; font-weight: 800; line-height: 1.0; margin-bottom: 0.5rem; max-width: 800px; }
-.hero-slogan { font-size: 1rem; color: var(--text-hero-dim); font-weight: 400; line-height: 1.4; max-width: 900px; }
+  <div id="home" class="hero-wrapper">
+    <header class="hero">
+      <div class="hero-bg" style={`background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.8)), url(${heroBgImage});`}></div>
+      <div class="hero-content">
+        <p class="hero-affiliation">{affiliation}</p>
+        <h1 class="hero-title">{fullLabName}</h1>
+        <p class="hero-slogan">{slogan}</p>
+      </div>
+      <a href="#content-section" class="scroll-hint">↓</a>
+    </header>
+  </div>
 
-.scroll-hint {
-position: absolute;
-bottom: 30px;
-left: 50%;
-transform: translateX(-50%);
-z-index: 3;
-text-decoration: none;
-color: rgba(255, 255, 255, 0.5);
-font-size: 1.2rem;
-transition: 0.3s;
-}
-.scroll-hint:hover { color: white; transform: translateX(-50%) translateY(5px); }
+  <div id="content-section">
+    <main id="research-focus">
+      <h2 class="area-title">Research Focus</h2>
+      <div class="research-flex">
+          <div class="focus-card"><h3>AI Agent Design & <br/>User Experience</h3></div>
+          <div class="focus-card"><h3>AI-Enhanced <br/>Research Methods</h3></div>
+          <div class="focus-card"><h3>Explainable AI & <br/>User Understanding</h3></div>
+          <div class="focus-card"><h3>Immersive AI <br/>Experiences</h3></div>
+          <div class="focus-card"><h3>AI Ethics, <br/>Philosophy & Policy</h3></div>
+      </div>
+    </main>
 
-/* 3. 内容区域 (PC) */
-#content-section {
-    scroll-margin-top: 80px; 
-}
+    <section class="contact-footer">
+      <p class="footer-text">Thoughts? Ideas? Collaboration opportunities?</p>
+      <p class="footer-text">Get in touch with us</p>
+      <button class="copy-btn" id="copyEmail" data-email={email}>Email Us</button>
+    </section>
+  </div>
 
-#research-focus {
-max-width: 1050px;
-margin: 60px auto 60px; 
-padding: 0 5%;
-text-align: center;
-}
-.area-title { font-size: 1.9rem; font-weight: 800; margin-bottom: 60px; text-transform: uppercase; letter-spacing: 1.5px; }
-.research-flex { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; }
-.focus-card {
-flex: 0 1 calc(33.33% - 15px);
-min-width: 270px;
-background: linear-gradient(145deg, #ffffff, #f9fafb);
-padding: 35px 25px;
-border-radius: 12px;
-border: 1px solid #f1f5f9;
-box-shadow: 0 4px 15px rgba(0,0,0,0.02);
-transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-text-align: left;
-}
-.focus-card:hover { transform: translateY(-8px); border-color: var(--ntu-red); box-shadow: 0 15px 35px rgba(206, 17, 38, 0.08); }
-.focus-card h3 { font-size: 1rem; color: var(--text-dark); line-height: 1.4; font-weight: 700; }
-
-/* 4. Footer */
-.footer { padding: 40px 5% 30px 5%; text-align: center; background: var(--bg-footer); border-top: 1px solid #f1f5f9; }
-.footer-text { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 10px; line-height: 1.3; }
-.copy-btn { margin-top: 12px; padding: 10px 32px; background: #1e293b; color: white; border-radius: 40px; font-size: 0.85rem; font-weight: 500; cursor: pointer; border: none; transition: all 0.3s ease; }
-.copy-btn:hover { background: var(--ntu-red); transform: scale(1.05); }
-
-/* --- 5. 手机端专项适配修复 (Responsive Mix) --- */
-@media (max-width: 768px) {
-  body, html { overflow-x: hidden; width: 100%; position: relative; }
-
-  .navbar { padding: 1rem 3%; }
-  .university-logo { height: 28px; padding-right: 5px; margin-right: 5px; }
-  .lab-info .main-title { font-size: 0.9rem; }
-  .nav-links { gap: 10px; }
-  .nav-links a { font-size: 0.65rem; white-space: nowrap; }
-
-  /* 保持横版视觉比例的 vw 单位缩放 */
-  .hero { height: 75vh; min-height: 450px; }
-  .hero-content { padding: 0 6%; transform: translateY(-10px); }
-  .hero-affiliation { font-size: 3.0vw; margin-bottom: 1rem; }
-  .hero-title { font-size: 9vw; line-height: 1.1; max-width: 95%; margin-bottom: 0.8rem; }
-  .hero-slogan { font-size: 3.0vw; line-height: 1.2; max-width: 95%; color: var(--text-hero-dim); }
-
-  /* 调整卡片比例，使其呈现扁平横条视觉 */
-  .area-title { font-size: 5.5vw; margin-bottom: 7vw; }
-  #research-focus { margin: 10vw auto; padding: 0 5%; }
-  .focus-card {
-    flex: 0 1 90%; 
-    padding: 4vw 5vw; 
-    margin-bottom: 2vw; 
-    min-height: 15vw; 
-    display: flex;
-    align-items: center; 
-    border-radius: 15px;
-  }
-  .focus-card h3 { font-size: 4.2vw; line-height: 1.6; }
-}
-</style>
-</head>
-<body>
-<nav class="navbar">
-<a href={`${import.meta.env.BASE_URL}/#home`} class="logo-module">
-<img src={logoImage} alt="NTU Logo" class="university-logo" />
-<div class="lab-info">
-<span class="main-title">{labName}</span>
-<span class="sub-title">{school}</span>
-</div>
-</a>
-<ul class="nav-links">
-<li><a href={`${import.meta.env.BASE_URL}/#home`}>Home</a></li>
-<li><a href="#content-section">Research</a></li>
-<li><a href="/publications">Publications</a></li>
-<li><a href="/people">People</a></li>
-</ul>
-</nav>
-
-<div id="home" class="hero-wrapper">
-<header class="hero">
-<div class="hero-bg" style={`background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.8)), url(${heroBgImage});`}></div>
-<div class="hero-content">
-<p class="hero-affiliation">{affiliation}</p>
-<h1 class="hero-title">{fullLabName}</h1>
-<p class="hero-slogan">{slogan}</p>
-</div>
-<a href="#content-section" class="scroll-hint">↓</a>
-</header>
-</div>
-
-<div id="content-section">
-<main id="research-focus">
-<h2 class="area-title">Research Focus</h2>
-<div class="research-flex">
-    <div class="focus-card"><h3>AI Agent Design & <br/>User Experience</h3></div>
-    <div class="focus-card"><h3>AI-Enhanced <br/>Research Methods</h3></div>
-    <div class="focus-card"><h3>Explainable AI & <br/>User Understanding</h3></div>
-    <div class="focus-card"><h3>Immersive AI <br/>Experiences</h3></div>
-    <div class="focus-card"><h3>AI Ethics, <br/>Philosophy & Policy</h3></div>
-</div>
-</main>
-
-<footer class="footer">
-<p class="footer-text">Thoughts? Ideas? Collaboration opportunities?</p>
-<p class="footer-text">Get in touch with us</p>
-<button class="copy-btn" id="copyEmail" data-email={email}>Email Us</button>
-</footer>
-</div>
-
-<script is:inline>
-document.getElementById('copyEmail').addEventListener('click', function() {
-const email = this.getAttribute('data-email');
-navigator.clipboard.writeText(email).then(() => {
-const originalText = this.innerText;
-this.innerText = 'Copied!';
-this.style.background = '#ce1126';
-setTimeout(() => {
-this.innerText = 'Email Us';
-this.style.background = '#1e293b';
-}, 2000);
-});
-});
-</script>
-</body>
-</html>
+  <script is:inline>
+    document.getElementById('copyEmail').addEventListener('click', function() {
+      const email = this.getAttribute('data-email');
+      navigator.clipboard.writeText(email).then(() => {
+        const originalText = this.innerText;
+        this.innerText = 'Copied!';
+        this.style.background = '#ce1126';
+        setTimeout(() => {
+          this.innerText = 'Email Us';
+          this.style.background = '#1e293b';
+        }, 2000);
+      });
+    });
+  </script>
+</MainLayout>

@@ -1,0 +1,72 @@
+---
+// src/layouts/MainLayout.astro
+const { title } = Astro.props;
+const labName = "HAIL";
+const school = "WKWSCI";
+const logoImage = `${import.meta.env.BASE_URL}/ntu-logo.png`;
+---
+
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>{title} | {labName}</title>
+  <style is:global>
+    /* 全局基础样式 */
+    :root { --ntu-red: #ce1126; --text-dark: #0f172a; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; overflow-x: hidden; width: 100%; }
+
+    /* 固定导航栏 CSS */
+    .navbar {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1rem 5%; background: white; 
+      position: sticky; 
+      top: 0; 
+      z-index: 1000; 
+      border-bottom: 1px solid #f1f5f9;
+      width: 100%;
+    }
+    .logo-module { display: flex; align-items: center; text-decoration: none; color: inherit; }
+    .university-logo { height: 45px; border-right: 1px solid #e2e8f0; padding-right: 15px; margin-right: 20px; }
+    .nav-links { display: flex; gap: 30px; list-style: none; }
+    .nav-links a { text-decoration: none; color: #475569; font-weight: 500; font-size: 0.9rem; transition: 0.3s; }
+    .nav-links a:hover { color: var(--ntu-red); }
+
+    /* 手机端专项适配修复 */
+    @media (max-width: 768px) {
+      .navbar { padding: 0.8rem 3%; }
+      .logo-module {
+        transform: scale(0.85); /* 缩小 Logo 模块腾出空间 */
+        transform-origin: left;
+      }
+      .nav-links { gap: 10px; }
+      .nav-links a { font-size: 0.75rem; white-space: nowrap; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <a href={`${import.meta.env.BASE_URL}/`} class="logo-module">
+      <img src={logoImage} alt="NTU Logo" class="university-logo" />
+      <div style="display: flex; flex-direction: column; line-height: 1.1;">
+        <span style="font-weight: 800; font-size: 1.4rem;">{labName}</span>
+        <span style="font-size: 0.8rem; color: #727c8a; font-weight: 600;">{school}</span>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href={`${import.meta.env.BASE_URL}/`}>Home</a></li>
+      <li><a href={`${import.meta.env.BASE_URL}/#content-section`}>Research</a></li>
+      <li><a href={`${import.meta.env.BASE_URL}/publications`}>Publications</a></li>
+      <li><a href={`${import.meta.env.BASE_URL}/people`}>People</a></li>
+    </ul>
+  </nav>
+
+  <slot />
+
+  <footer style="padding: 40px; text-align: center; border-top: 1px solid #f1f5f9; background: #f8fafc;">
+    <p style="font-size: 0.8rem; color: #94a3b8;">© 2026 Human AI-Interaction Lab. All Rights Reserved.</p>
+  </footer>
+</body>
+</html>

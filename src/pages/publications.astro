@@ -1,0 +1,703 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+
+const heroBgImage = `${import.meta.env.BASE_URL}/pub-bg.png`;
+
+// 数据结构已更新：使用 journalInfo 字段精确控制 APA 斜体格式
+const publications: any[] = [
+  {
+    year: "2025",
+    papers: [
+      {
+        id: "pub-2025-1",
+        title: "Bringing people into the story: How virtual reality journalism affects the feeling of presence",
+        authors: "Lee, S., Kim, T., Lee, K. M., Park, N., & Song, H.",
+        journalInfo: "<em>Digital Journalism</em>.",
+        doi: "10.1080/21670811.2025.2553157",
+        abstract: "Virtual reality (VR) journalism can offer immersive experiences, enhancing the audience’s empathy and issue involvement. In the literature, however, the term VR refers to different types of technology, which may obscure the clear effects of VR journalism. Guided by the framework for immersive virtual environment (FIVE), this paper investigated the effects of VR journalism focusing on two different features of VR: device-focused (i.e., head-mounted display (HMD)) and content format-focused (i.e., 360° video) by conducting a 3 (device-focused: HMD, computer, smartphone) X 2 (content-focused: 360° video, fixed view video) between-subjects experiment (N = 171). Results showed that participants in the 360° video condition, compared to those in the fixed video condition, experienced a higher level of social presence, which, in turn, increased their empathic concern toward the characters and led them to be more involved in the videos’ topic. The HMD condition, on the other hand, did not show significant differences in helping participants engage in the characters and the topic, compared to computer and smartphone conditions. Theoretical and practical implications of the different features of VR are discussed."
+      }
+    ]
+  },
+  {
+    year: "2024",
+    papers: [
+      {
+        id: "pub-2024-1",
+        title: "Exploring the association between the Proteus effect and intention to play massive multiplayer online role-playing games (MMORPGs)",
+        authors: "Sun, S., Kim, J. H., Lee, K. M., & Nan, D.",
+        journalInfo: "<em>Internet Research, 34</em>(1), 58-78.",
+        doi: "10.1108/INTR-07-2022-0487",
+        abstract: "<strong>Purpose:</strong> Massive multiplayer online role-playing games (MMORPGs) are representative metaverse games that are thriving in academia and the industry. This study aims to develop an integrated model based on Yee's motivations and the Proteus effect to explore individuals' intentions of playing MMORPGs.<br><br><strong>Methodology:</strong> The data were gathered by conducting an online survey (n = 441) for the players of World of Warcraft, an MMORPG. The collected data were analyzed with a structural equation model.<br><br><strong>Findings:</strong> The outcomes of this research reveal that the Proteus effect positively influenced the intentions of the players to play the game via mediations of social, immersion, achievement motivations and enjoyment. Furthermore, the players influenced by the Proteus effect, which enables avatar embodiment and identification, exhibited a stronger intention to play MMORPGs.<br><br><strong>Originality:</strong> This research is one of the first attempts to establish a theoretical framework involving the Proteus effect and Yee's motivations. In addition, the findings of this study imply that the Proteus effect should be considered when investigating the individual experience of metaverse games."
+      }
+    ]
+  },
+  {
+    year: "2023",
+    papers: [
+      {
+        id: "pub-2023-1",
+        title: "Voice orientation of conversational interfaces in vehicles",
+        authors: "Lee, K. M., Moon, Y., Park, I., & Lee, J.",
+        journalInfo: "<em>Behaviour & Information Technology</em>.",
+        doi: "10.1080/0144929X.2023.2166870",
+        abstract: "Connected vehicles have become a promising platform for conversational agents. However, drivers might struggle to control systems that feature multiple AI agents. To improve the usability of increasingly complex systems and the user’s interaction experience, the integration of various conversational agents needs to be carefully considered. This study aims to investigate the following: What constitutes an efficient, user-friendly arrangement of the tasks performed by a home and a car artificial intelligence (AI) agent? What is the optimal method to trigger the use of such agents? A between-subjects factorial experiment was conducted with three types of AI agent setting (home AI generalist vs. vehicle AI generalist vs. home and vehicle AI specialists) and two activation methods (voice activation vs. push-to-talk activation). The results indicate that interacting with specialist AI agents enhances the perceived ease of use and the credibility of these agents. Furthermore, voice activation improves the social presence and attractiveness of an AI agent. The findings suggest that an AI agent that offers role specialization and a natural interaction method will improve drivers’ interaction experience."
+      },
+      {
+        id: "pub-2023-2",
+        title: "A bibliometric analysis of Metaverse research using VOSviewer",
+        authors: "Nan, D., Sun, S., Gopi, S., Lee, K. M., & Kim, J. H.",
+        journalInfo: "<em>Proceedings of 17th International Conference on Ubiquitous Information Management and Communication (IMCOM)</em>, 1-4.",
+        doi: "10.1109/IMCOM56909.2023.10035584",
+        abstract: "This research tracked the knowledge frameworks of the Metaverse academic field. To this end, we employed “metaverse” as the keyword to gather articles from Web of Science and performed bibliometric analyses using VOSviewer. Concretely, we explored productive and highly-cited authors, institutes, countries/regions, and journals/conference proceedings. For a deeper understanding of the state of Metaverse research, we also reviewed highly-cited literature and performed keyword-occurrence analysis. Overall, this is one of the first studies providing a comprehensive understanding of knowledge structures in the context of Metaverse research."
+      },
+      {
+        id: "pub-2023-3",
+        title: "Fintech agents: Technologies and theories",
+        authors: "Pal, A., Gopi, S., & Lee, K. M.",
+        journalInfo: "<em>Electronics, 12</em>(15), 3301.",
+        doi: "10.3390/electronics12153301",
+        abstract: "Many financial technology (fintech) applications have incorporated interactive computer agents to act as mediators between the user and the fintech system. This paper provides a comprehensive review of interactive fintech agents from technological and social science perspectives. First, we explain the general fintech landscape and define interactive fintech agents. Next, we review the major technologies involved in creating fintech: (1) artificial intelligence and machine learning, (2) big data, (3) cloud computing, and (4) blockchain; as well as the specific key technologies enabling the following aspects of interactive fintech agents: (1) intelligence, (2) understanding of users, and (3) manifestation as social actors. Following the technology review, we examine issues and theories related to human-fintech agent interaction in the following areas: (1) agents’ understanding of users, (2) agents’ manifestation as social actors (via embodiment, emotion, and personality), and (3) users’ social interaction with agents. Finally, we suggest directions for future research on fintech agents."
+      },
+      {
+        id: "pub-2023-4",
+        title: "Financial Technologies",
+        authors: "Pal, A., Gopi, S., & Lee, K. M.",
+        journalInfo: "In <em>Encyclopedia</em>.",
+        url: "https://encyclopedia.pub/entry/51483",
+        abstract: "Financial technology (fintech) is an emerging field where novel technologies are used to improve the business operations or services offered by financial institutions and enterprises. Artificial intelligence (AI), blockchain, and cloud services have caused process disruption, while big data enables greater customer acquisition and retention. Together, these technologies have enhanced the use of interactive fintech agents in finance."
+      }
+    ]
+  },
+  {
+    year: "2022",
+    papers: [
+      {
+        id: "pub-2022-1",
+        title: "Interacting with an embodied interface effects of embodied agent and voice command on smart TV interface",
+        authors: "Lee, K. M., Lee, J., & Sah, Y. J.",
+        journalInfo: "<em>Interaction Studies, 23</em>(1), 116-142.",
+        doi: "10.1075/is.20030.lee",
+        abstract: "Despite their potential for facilitating interaction between a user and computer, an embodied agent and voice command have not been examined enough for their matching effects. The current study proposes that an embodied agent and voice command generate positive evaluative outcomes, particularly when they are accompanied by each other. To test this prediction, we conducted a 2 (visual output: embodied agent vs. geometric figure) × 2 (input modality: voice command vs. remote controller) between-subjects experiment (N = 52), and examined whether visual output and input modality jointly influence participants’ social attribution (i.e., anthropomorphism, animacy, likability, and perceived intelligence), social presence, and satisfaction. Results show that voice command does facilitate users’ social attribution and social presence, but only when an embodied agent was presented. Also, the effects of voice command on social presence and satisfaction were mediated by anthropomorphism and perceived intelligence respectively, but only when the interface displayed an embodied agent. The present study evidences the holistic nature of human-computer interaction, revealing the importance of matches in the input and output interface."
+      },
+      {
+        id: "pub-2022-2",
+        title: "Polite speech strategies and their impact on drivers’ trust in autonomous vehicles",
+        authors: "Lee, J., & Lee, K. M.",
+        journalInfo: "<em>Computers in Human Behavior, 127</em>, 107015.",
+        doi: "10.1016/j.chb.2021.107015",
+        abstract: "This study proposes adopting linguistic politeness in vehicle speech interfaces, as active communication between drivers and vehicles will become an essential part of driving with advanced autonomous driving technologies. Two between-subjects experiments were conducted to test the influences of politeness strategies (i.e., asking help, giving a reason, expressing gratitude) on drivers' perceptions of the vehicles. The results indicate that drivers evaluate polite vehicles as more sociable and trustworthy, and they perceive polite instructions were more acceptable. The results also suggest that providing reasons for requests and expressing gratitude for drivers' cooperation can be an optimal linguistic strategy in vehicle speech interfaces. Moreover, this study identifies the layers of heuristics in the process of shaping trust in autonomous vehicles. Drivers can instantly recognize politeness in vehicle speech interfaces, and this politeness heuristic was found to increase drivers' perception of social presence, thereby heightening drivers’ trust in the autonomous vehicles."
+      },
+      {
+        id: "pub-2022-3",
+        title: "The digital divide and seeking health information on smartphones in Asia: Survey study of ten countries",
+        authors: "Wang, X., Shi, J., & Lee, K. M.",
+        journalInfo: "<em>Journal of Medical Internet Research, 24</em>(1), e24086.",
+        doi: "10.2196/24086",
+        abstract: "<strong>Background:</strong> Although recent developments in mobile health have elevated the importance of how smartphones empower individuals to seek health information, research investigating this phenomenon in Asian countries has been rare.<br><br><strong>Objective:</strong> The goal of our study was to provide a comprehensive profile of mobile health information seekers and to examine the individual- and country-level digital divide in Asia.<br><br><strong>Methods:</strong> With survey data from 10 Asian countries (N=9086), we ran multilevel regression models to assess the effect of sociodemographic factors, technological factors, and country-level disparities on using smartphones to seek health information.<br><br><strong>Results:</strong> Respondents who were women (β=.13, P<.001), parents (β=.16, P<.001), employed (β=.08, P=.002), of higher social status (β=.08, P<.001), and/or from countries with low health expenditures (β=.19, P=.02) were more likely to use smartphones to seek health information. In terms of technological factors, technology innovativeness (β=.10, P<.001) and frequency of smartphone use (β=.42, P<.001) were important factors of health information seeking, whereas the effect of online information quality was marginal (β=–.04, P<.001).<br><br><strong>Conclusions:</strong> Among smartphone users in Asia, health information seeking varies according to individuals’ socioeconomic status, their innovativeness toward technology, and their frequency of smartphone use. Although smartphones widen the digital divide among individuals with different socioeconomic status, they also bridge the divide between countries with varying health expenditures. Smartphones appear to be a particularly useful complement to manage health in developing countries."
+      },
+      {
+        id: "pub-2022-4",
+        title: "Cultural differences in digital game experiences: Psychological responses to avatar and game environments",
+        authors: "Lee, K. M., & Sah, Y. J.",
+        journalInfo: "<em>International Journal of Gaming and Computer-Mediated Simulations (IJGCMS), 14</em>(1), 1-15.",
+        doi: "10.4018/IJGCMS.313186",
+        abstract: "The literature proposes that East Asians have a holistic view focusing on both salient objects and their backgrounds, whereas Westerners maintain an analytic view paying attention to focal objects and their attributes. Moreover, East Asians stress interdependency of self, while Westerners emphasize independency of self. The current study examined how cultural differences in world views and self-construals influence players' digital game experience, including visual attention, avatar identification, sense of agency, and spatial presence. Supporting the hypotheses, results showed that South Korean participants, compared to European participants, did pay greater attention to background objects, feel greater spatial presence, and lower agency over their avatar. Participants also differed in the association between spatial presence and enjoyment: spatial presence positively predicted enjoyment for South Korean participants, but not for European participants. Theoretical and practical implications of the study are discussed."
+      },
+      {
+        id: "pub-2022-5",
+        title: "Editorial: User-avatar bond: Risk and opportunities in gaming and beyond",
+        authors: "Stavropoulos, V., Ratan, R., & Lee, K. M.",
+        journalInfo: "<em>Frontiers in Psychology, 13</em>, 923146.",
+        doi: "10.3389/fpsyg.2022.923146",
+        abstract: "updated"
+      }
+    ]
+  },
+  {
+    year: "2021",
+    papers: [
+      {
+        id: "pub-2021-1",
+        title: "Virtual reality advertising with brand experiences: The effects of media devices, virtual representation of the self, and self-presence",
+        authors: "Song, H., Kim, J., Nguyen, T., Lee, K. M., & Park, N.",
+        journalInfo: "<em>International Journal of Advertising, 40</em>(7), 1096-1114.",
+        doi: "10.1080/02650487.2020.1834210",
+        abstract: "Virtual reality (VR) is gaining mainstream attention, but little is known about the effects of VR advertising (VR ad). This study examined 360-degree video-based advertising, which presented an entire view of the scene and allowed users to pan around the view interactively. In particular, the study sought to answer the following questions: (a) does the effect of VR ad vary when it is viewed with different media devices?; (b) what is the effect of virtual representation of the self (VRS) in VR ad?; and (c) does self-presence mediate the association between VRS and the user’s experience with an advertised brand? An experiment (N = 203) was conducted using a 2 (VRS: present vs. absent) × 3 (media devices: smartphone vs. computer vs. head-mounted display) between-subjects design. Primary findings indicate that absence of VRS in VR ad had positive effects on users’ liking the ad and favorable attitude toward the advertised brand. Self-presence was found to be a significant mediator that explains why absence of VRS led to favorable experiences. The study did not find any significant difference on VR ad experiences across media devices. Theoretical and practical implications of VR ad were discussed."
+      },
+      {
+        id: "pub-2021-2",
+        title: "The (digital) medium of mobility is the message: Examining the influence of e-scooter mobile app perceptions on e-scooter use intent",
+        authors: "Ratan, R., Earle, K., Rosenthal, S., Chen, V. H. H., Gambino, A., Goggin, G., Stevens, H., Li, B., & Lee, K. M.",
+        journalInfo: "<em>Computers in Human Behavior Reports, 3</em>, 100076.",
+        doi: "10.1016/j.chbr.2021.100076",
+        abstract: "The present research examines how perceptions of e-scooter mobile apps (i.e., a communication technology) influence intent to use e-scooters (i.e., a transportation technology) while considering other perceptions specific to e-scooters (ease of use, usefulness, safety, environmental impact, and enjoyment), context of use (geographic landscape), and demographic factors (age and sex). Results suggest mobile app perceived ease of use is associated with e-scooter use intent and this effect is mediated by e-scooter perceived usefulness, even when controlling for e-scooter perceived ease of use as well as other influential elements of e-scooter use. In addition to illustrating the importance of user experiences with mobile apps within the e-scooter context, this interdisciplinary research furthers a fundamental argument that media technologies are an integral factor in the adoption of transportation technologies."
+      }
+    ]
+  },
+  {
+    year: "2020",
+    papers: [
+      {
+        id: "pub-2020-1",
+        title: "The paradox of technology innovativeness and risk perceptions – A profile of Asian smartphone users",
+        authors: "Wang, X. & Lee, K. M.",
+        journalInfo: "<em>Telematics and Informatics, 51</em>, 101415.",
+        doi: "10.1016/j.tele.2020.101415",
+        abstract: "Risk perceptions and technology innovativeness are the two primary factors related to the adoption of mobile technologies. The current study examines the role of technology innovativeness and risk perceptions on smartphone use and dependence in an Asian context. A total of 9086 participants were recruited through online surveys from ten Asian countries. Ordinary least squares regression analyses revealed the effects of technology innovativeness, information security, privacy concern, and their interactions on smartphone use and dependence. Moreover, based on users’ smartphone usage patterns and perceptions, this paper identified four homogeneous groups using cluster analysis. Results shows that Asian smartphone users can be segmented into four groups: innovators, conservatives, moderators, and laggards. The four clusters show significant differences in demographic features. Theoretical and practical implications are discussed based on these findings."
+      }
+    ]
+  },
+  {
+    year: "2019",
+    papers: [
+      {
+        id: "pub-2019-1",
+        title: "Vehicle politeness in driving situations",
+        authors: "Lee, J. G., Lee, K. M., & Ryu, S. H.",
+        journalInfo: "<em>Future Internet, 11</em>(1), 1-10.",
+        doi: "10.3390/fi11010022",
+        abstract: "This study presents linguistically augmented models of phrase-based statistical machine translation (PBSMT) using different linguistic features (factors) on the top of the source surface form. The architecture addresses two major problems occurring in machine translation, namely the poor performance of direct translation from a highly-inflected and morphologically complex language into morphologically poor languages, and the data sparseness issue, which becomes a significant challenge under low-resource conditions. We use three factors (lemma, part-of-speech tags, and morphological features) to enrich the input side with additional information to improve the quality of direct translation from Arabic to Chinese, considering the importance and global presence of this language pair as well as the limitation of work on machine translation between these two languages. In an effort to deal with the issue of the out of vocabulary (OOV) words and missing words, we propose the best combination of factors and models based on alternative paths. The proposed models were compared with the standard PBSMT model which represents the baseline of this work, and two enhanced approaches tokenized by a state-of-the-art external tool that has been proven to be useful for Arabic as a morphologically rich and complex language. The experiment was performed with a Moses decoder on freely available data extracted from a multilingual corpus from United Nation documents (MultiUN). Results of a preliminary evaluation in terms of BLEU scores show that the use of linguistic features on the Arabic side considerably outperforms baseline and tokenized approaches, the system can consistently reduce the OOV rate as well."
+      }
+    ]
+  },
+  {
+    year: "2017",
+    papers: [
+      {
+        id: "pub-2017-1",
+        title: "Human-computer interaction",
+        authors: "Jung, Y., & Lee, K. M.",
+        journalInfo: "In P. Roessler, C. A. Hoffner, & L. van Zoonen (Eds.), <em>The International Encyclopedia of Media Effects</em> (pp. 721-730). Wiley-Blackwell.",
+        doi: "10.1002/9781118783764.wbieme0140",
+        abstract: "Human–computer interaction (HCI) is an interdisciplinary field that studies how people interact with machines in general and with computing systems in particular. Despite its initial development as a specialization in computer science, the field has quickly become multidisciplinary. It now sits at the crossroad between social sciences (on the human side) and computer science (on the technological side). It tries to answer daily questions that emerge from the rapidly increasing interaction between humans and computers. As implied by the two perspectives on the concept of interactivity and affordance (i.e., technological features vs. human perception), the various subdisciplines of HCI have developed and remained largely distinct. This presents both challenges and opportunities for HCI scholars. Embracing new paradigms such as the human factors approach, the field has demonstrated some potential for theoretical concepts to be successfully transformed into easy-to-use everyday products (e.g., speech interface, social robots, and/or smart devices)."
+      },
+      {
+        id: "pub-2017-2",
+        title: "Cognitive map or medium materiality? Reading on paper and screen",
+        authors: "Hou, J., Rashid, J., & Lee, K. M.",
+        journalInfo: "<em>Computers in Human Behavior, 67</em>, 84-94.",
+        doi: "10.1016/j.chb.2016.10.014",
+        abstract: "The present study examined two common mechanisms that are used to explain why reading on an electronic screen versus paper result in different reading outcomes: The Cognitive Map Mechanism and the Medium Materiality Mechanism. A laboratory experiment (N = 45), was conducted using a three-group comparison design (paper book vs. digital equivalent vs. digital disrupted view). Our hypotheses that were based on the cognitive map mechanism were largely supported. On the other hand, our hypotheses following the medium materiality mechanism were not sufficiently evidenced. Specifically, our results showed that the paper book was similar to its digital equivalent, and both were better than the digital disrupted view in terms of reading comprehension, feelings of fatigue, and psychological immersion. The findings implied that it is not the materiality of the presentation medium that influences reading outcomes, rather it is the extent to which the text presentation facilitates, or impedes, the reader's ability to construct a cognitive map that influences the reading process. Implications for future research and practice are discussed."
+      }
+    ]
+  },
+  {
+    year: "2016",
+    papers: [
+      {
+        id: "pub-2016-1",
+        title: "Presence",
+        authors: "Lee, K. M., & Park, N.",
+        journalInfo: "In K. B. Jensen (Ed.), <em>The International Encyclopedia of Communication Theory and Philosophy</em>. Wiley-Blackwell."
+      }
+    ]
+  },
+  {
+    year: "2015",
+    papers: [
+      {
+        id: "pub-2015-1",
+        title: "U.S. television news about the smartphone: A framing analysis of issues, sources, and aspects",
+        authors: "Kang, S., Lee, K. M., & Cerda, Y.",
+        journalInfo: "<em>Online Journal of Communication and Media Technologies, 5</em>(1), 174-196."
+      },
+      {
+        id: "pub-2015-2",
+        title: "Social responses to conversational TV VUI: Apology and voice",
+        authors: "Park, E. K., Lee, K. M., & Shin, D. H.",
+        journalInfo: "<em>International Journal of Technology and Human Interaction (IJTHI), 11</em>(1), 17-32."
+      },
+      {
+        id: "pub-2015-3",
+        title: "Telling stories about breastfeeding through Facebook: The impact of user-generated content (UGC) on pro-breastfeeding attitudes",
+        authors: "Jin, S., Phua, J., & Lee, K. M.",
+        journalInfo: "<em>Computers in Human Behavior, 46</em>, 6-17."
+      },
+      {
+        id: "pub-2015-4",
+        title: "Effects of trait hostility, mapping interface, and character identification on aggressive thoughts and enjoyment after playing a violent video game",
+        authors: "Jung, Y., Park, N., & Lee, K. M.",
+        journalInfo: "<em>Cyberpsychology & Behavior, 18</em>(12), 711-717."
+      }
+    ]
+  },
+  {
+    year: "2014",
+    papers: [
+      {
+        id: "pub-2014-1",
+        title: "Understanding the acceptance of teleconferencing systems among employees: An extension of the technology acceptance model",
+        authors: "Park, N., Rhoads, M., Hou, J., & Lee, K. M.",
+        journalInfo: "<em>Computers in Human Behavior, 39</em>, 118-127."
+      },
+      {
+        id: "pub-2014-2",
+        title: "Social networking sites and other media use, acculturation stress, and psychological well-being among East Asian college students in the United States",
+        authors: "Park, N., Song, H., & Lee, K. M.",
+        journalInfo: "<em>Computers in Human Behavior, 36</em>, 138-146."
+      },
+      {
+        id: "pub-2014-3",
+        title: "Virtual body vs. real body in exergames: Reducing social physique anxiety in exercise experiences",
+        authors: "Song, H., Kim, J., & Lee, K. M.",
+        journalInfo: "<em>Computers in Human Behavior, 36</em>, 282-285."
+      },
+      {
+        id: "pub-2014-4",
+        title: "Effects of stereoscopic movies: The positions of stereoscopic objects and the viewing conditions",
+        authors: "Cho, E. J., Lee, K. M., Cho, S. M., & Choi, Y. H.",
+        journalInfo: "<em>Displays, 35</em>(2), 59-65."
+      }
+    ]
+  },
+  {
+    year: "2013",
+    papers: [
+      {
+        id: "pub-2013-1",
+        title: "The effects of competition and competitiveness upon intrinsic motivation in exergames",
+        authors: "Song, H., Kim, J., Tenzek, K. E., & Lee, K. M.",
+        journalInfo: "<em>Computers in Human Behavior, 29</em>(4), 1702-1708."
+      },
+      {
+        id: "pub-2013-2",
+        title: "Effects of 3D display: A comparison between shuttered and polarized displays",
+        authors: "Cho, E. J., & Lee, K. M.",
+        journalInfo: "<em>Displays, 34</em>(4), 353-358."
+      }
+    ]
+  },
+  {
+    year: "2012",
+    papers: [
+      {
+        id: "pub-2012-1",
+        title: "Effects of screen size, viewing angle, and players’ immersion tendencies on game experience",
+        authors: "Hou, J., Nam, Y., Peng, W., & Lee, K. M.",
+        journalInfo: "<em>Computers in Human Behavior, 28</em>(2), 617-623."
+      }
+    ]
+  },
+  {
+    year: "2011",
+    papers: [
+      {
+        id: "pub-2011-1",
+        title: "The inhibitory effect of phonological syllables, rather than orthographic syllables, as evidenced in Korean lexical decision tasks",
+        authors: "Kwon, Y., Lee, C., Lee, K., & Nam, K.",
+        journalInfo: "<em>Psychologia, 54</em>(1), 1-14."
+      },
+      {
+        id: "pub-2011-2",
+        title: "Self-presentation on social network sites: Development of a self-identity expression scale and its relationship with social competence",
+        authors: "Gearhart, S., Kang, S., & Lee, K. M.",
+        journalInfo: "<em>Iowa Journal of Communication, 43</em>, 29-51."
+      },
+      {
+        id: "pub-2011-3",
+        title: "Intention to upload video content on the internet: The role of social norms and ego-involvement",
+        authors: "Park, N., Jung, Y., & Lee, K. M.",
+        journalInfo: "<em>Computers in Human Behavior, 27</em>(5), 1996-2004."
+      },
+      {
+        id: "pub-2011-4",
+        title: "Effects of interactivity in educational games: A mediating role of social presence on learning outcomes",
+        authors: "Lee, K. M., Jeong, E. J., Park, N., & Ryu, S.",
+        journalInfo: "<em>International Journal of Human-Computer Interaction, 27</em>(7), 620-633."
+      },
+      {
+        id: "pub-2011-5",
+        title: "Can user choice alter experimental findings in human computer interaction?: Similarity attraction versus cognitive dissonance in social responses to synthetic speech",
+        authors: "Lee, K. M., Jung, Y., & Nass, C.",
+        journalInfo: "<em>International Journal of Human-Computer Interaction, 27</em>(4), 307-322."
+      }
+    ]
+  },
+  {
+    year: "2010",
+    papers: [
+      {
+        id: "pub-2010-1",
+        title: "Value creation of mobile services through presence: Designing mobile information and entertainment applications with presence in mind",
+        authors: "Lee, K. M., Yates, D., Clark, J., & Sawy, O. E.",
+        journalInfo: "<em>Presence: Teleoperators and Virtual Environments, 19</em>(3), 265-279."
+      },
+      {
+        id: "pub-2010-2",
+        title: "The influence of regulatory fit and interactivity on brand satisfaction and trust in E-Health marketing inside 3D virtual worlds (Second Life)",
+        authors: "Jin, S., & Lee, K. M.",
+        journalInfo: "<em>Cyberpsychology & Behavior, 13</em>(6), 673-680."
+      },
+      {
+        id: "pub-2010-3",
+        title: "Promoting exercise self-efficacy with an exergame",
+        authors: "Song, H., Peng, W., & Lee, K. M.",
+        journalInfo: "<em>Journal of Health Communication, 16</em>(2), 148-162."
+      },
+      {
+        id: "pub-2010-4",
+        title: "Will the experience of playing a violent role in a video game influence people’s judgments of violent crimes?",
+        authors: "Lee, K. M., Peng, W., & Klein, J.",
+        journalInfo: "<em>Computers in Human Behavior, 26</em>(5), 1019-1023."
+      },
+      {
+        id: "pub-2010-5",
+        title: "Effects of pre-game stories on feelings of presence and evaluation of computer games",
+        authors: "Park, N., Lee, K. M., Jin, S. A., & Kang, S.",
+        journalInfo: "<em>International Journal of Human-Computer Studies, 68</em>(11), 822-833."
+      },
+      {
+        id: "pub-2010-6",
+        title: "Wireless cities: Local governments’ involvement in the shaping of Wi-Fi networks",
+        authors: "Park, N., & Lee, K. M.",
+        journalInfo: "<em>Journal of Broadcasting & Electronic Media, 54</em>(3), 425-442."
+      }
+    ]
+  },
+  {
+    year: "2009",
+    papers: [
+      {
+        id: "pub-2009-1",
+        title: "Presence theory",
+        authors: "Lee, K. M.",
+        journalInfo: "In S. Littlejohn & K. Foss (Eds.), <em>Encyclopedia of Communication Theory</em> (pp. 793-796). Sage."
+      },
+      {
+        id: "pub-2009-2",
+        title: "Effects of computer/video games, and beyond",
+        authors: "Lee, K., Peng, W., & Park, N.",
+        journalInfo: "In J. Bryant & M. B. Oliver (Eds.), <em>Media Effects: Advances in Theory and Research</em> (pp. 551-566). Routledge."
+      }
+    ]
+  },
+  {
+    year: "2008",
+    papers: [
+      {
+        id: "pub-2008-1",
+        title: "The media equation",
+        authors: "Lee, K. M.",
+        journalInfo: "In W. Donsbach (Ed.), <em>The International Encyclopedia of Communication</em> (Vol. VII, pp. 2904-2907). Blackwell Publishing."
+      },
+      {
+        id: "pub-2008-2",
+        title: "Interactivity in reception",
+        authors: "Lee, K. M.",
+        journalInfo: "In W. Donsbach (Ed.), <em>The International Encyclopedia of Communication</em> (Vol. V, pp. 2322-2326). Blackwell Publishing."
+      }
+    ]
+  },
+  {
+    year: "2007",
+    papers: [
+      {
+        id: "pub-2007-1",
+        title: "Effects of online news forum on corporate reputation",
+        authors: "Park, N., & Lee, K. M.",
+        journalInfo: "<em>Public Relations Review, 33</em>(3), 346-348."
+      },
+      {
+        id: "pub-2007-2",
+        title: "User acceptance of e-learning in higher education: An application of the technology acceptance model",
+        authors: "Park, N., Lee, K. M., & Cheong, P. H.",
+        journalInfo: "<em>Journal of Computer-Mediated Communication, 13</em>(1), 163-185."
+      },
+      {
+        id: "pub-2007-3",
+        title: "Children’s learning through computer-synthesized speech: Gender-consistency and gender-similarity effects",
+        authors: "Lee, K. M., Liao, K., & Ryu, S.",
+        journalInfo: "<em>Human Communication Research, 33</em>(3), 310-329."
+      }
+    ]
+  },
+  {
+    year: "2006",
+    papers: [
+      {
+        id: "pub-2006-1",
+        title: "Phenomenological understanding of social responses to synthesized speech",
+        authors: "Lee, K. M.",
+        journalInfo: "In P. Messaris & L. Humphreys (Eds.), <em>Digital Media: Transformations in Human Communication</em> (pp. 127-138). Peter Lang."
+      },
+      {
+        id: "pub-2006-2",
+        title: "Effects of internet use on college students’ political efficacy",
+        authors: "Lee, K. M.",
+        journalInfo: "<em>Cyberpsychology & Behavior, 9</em>(4), 415-422."
+      },
+      {
+        id: "pub-2006-3",
+        title: "Can robots manifest personality?: An empirical test of personality recognition, social responses, and social presence in human-robot interaction",
+        authors: "Lee, K. M., Peng, W., Yan, C., & Jin, S.",
+        journalInfo: "<em>Journal of Communication, 56</em>(4), 754-772."
+      },
+      {
+        id: "pub-2006-4",
+        title: "Are physically embodied social agents better than disembodied social agents?: The effects of physical embodiment, tactile interaction, and people’s loneliness in human-robot interaction",
+        authors: "Lee, K. M., Jung, Y., Kim, J., & Kim, S.",
+        journalInfo: "<em>International Journal of Human-Computer Studies, 64</em>(10), 962-973."
+      },
+      {
+        id: "pub-2006-5",
+        title: "Narrative and interactivity in computer games",
+        authors: "Lee, K. M., Park, N., & Jin, S.",
+        journalInfo: "In P. Vorderer & J. Bryant (Eds.), <em>Playing Video Games: Motives, Responses, and Consequences</em> (pp. 259-274). Lawrence Erlbaum Associates."
+      }
+    ]
+  },
+  {
+    year: "2005",
+    papers: [
+      {
+        id: "pub-2005-1",
+        title: "Evolutionary nature of virtual experience",
+        authors: "Lee, K. M., & Jung, Y.",
+        journalInfo: "<em>Journal of Cultural and Evolutionary Psychology, 3</em>(2), 159-178."
+      },
+      {
+        id: "pub-2005-2",
+        title: "Social-psychological origins of feelings of presence: Creating social presence with machine-generated voices",
+        authors: "Lee, K. M., & Nass, C.",
+        journalInfo: "<em>Media Psychology, 7</em>(1), 31-45."
+      },
+      {
+        id: "pub-2005-3",
+        title: "Speech vs. touch: A comparative study of the use of speech and DTMF keypad for navigation",
+        authors: "Lee, K. M., & Lai, J.",
+        journalInfo: "<em>International Journal of Human-Computer Interaction, 19</em>(3), 343-360."
+      },
+      {
+        id: "pub-2005-4",
+        title: "Can a robot be perceived as a developing creature?: Effects of a robot’s long-term cognitive developments on its social presence and people’s social responses toward it",
+        authors: "Lee, K. M., Park, N., & Song, H.",
+        journalInfo: "<em>Human Communication Research, 31</em>(4), 538-563."
+      }
+    ]
+  },
+  {
+    year: "2004",
+    papers: [
+      {
+        id: "pub-2004-1",
+        title: "Why presence occurs: Evolutionary psychology, media equation, and presence",
+        authors: "Lee, K. M.",
+        journalInfo: "<em>Presence: Teleoperators and Virtual Environments, 13</em>(4), 494-505."
+      },
+      {
+        id: "pub-2004-2",
+        title: "Presence, explicated",
+        authors: "Lee, K. M.",
+        journalInfo: "<em>Communication Theory, 14</em>(1), 27-50."
+      },
+      {
+        id: "pub-2004-3",
+        title: "Mixing personal computer and handheld interfaces and devices: Effects on perceptions and attitudes",
+        authors: "Jonsson, I., Nass, C., & Lee, K. M.",
+        journalInfo: "<em>International Journal of Human-Computer Studies, 61</em>(1), 71-83."
+      },
+      {
+        id: "pub-2004-4",
+        title: "The multiple source effect and synthesized speech: Doubly disembodied language as a conceptual framework",
+        authors: "Lee, K. M., & Nass, C.",
+        journalInfo: "<em>Human Communication Research, 30</em>(2), 182-207."
+      }
+    ]
+  },
+  {
+    year: "2002",
+    papers: [
+      {
+        id: "pub-2002-1",
+        title: "Ubiquitous access to unified messaging: A study of usability and the limits of pervasive computing",
+        authors: "Lai, J., Mitchell, S., Viveros, M., Wood, D., & Lee, K. M.",
+        journalInfo: "<em>International Journal of Human-Computer Interaction, 14</em>(3), 385-404."
+      },
+      {
+        id: "pub-2002-2",
+        title: "Modeling the regional differences in 3G standardization: The entrepreneur, the committee, and the gambler",
+        authors: "Lee, K. M.",
+        journalInfo: "<em>Communications & Strategies, 47</em>, 11-32."
+      }
+    ]
+  },
+  {
+    year: "2001",
+    papers: [
+      {
+        id: "pub-2001-1",
+        title: "Does computer-generated speech manifest personality?: Experimental tests of recognition, similarity-attraction, and consistency-attraction",
+        authors: "Nass, C., & Lee, K. M.",
+        journalInfo: "<em>Journal of Experimental Psychology: Applied, 7</em>(3), 171-181."
+      }
+    ]
+  },
+  {
+    year: "2000",
+    papers: [
+      {
+        id: "pub-2000-1",
+        title: "MUDs and self-efficacy",
+        authors: "Lee, K. M.",
+        journalInfo: "<em>Educational Media International, 37</em>(3), 177-183."
+      }
+    ]
+  }
+];
+---
+
+<MainLayout title="Publications">
+  <style>
+    .pub-hero {
+      position: relative;
+      height: 40vh;
+      min-height: 300px;
+      display: flex;
+      align-items: center;
+      padding: 0 5%;
+      color: white;
+      background-color: #050505;
+      overflow: hidden;
+    }
+    .pub-hero-bg {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background-size: cover;
+      background-position: center;
+      opacity: 0.5;
+      z-index: 1;
+    }
+    .pub-hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 1000px;
+      margin: 0 auto;
+      width: 100%;
+    }
+    .pub-hero-title { font-size: 3rem; font-weight: 700; margin-bottom: 0.5rem; letter-spacing: -0.5px; }
+    .pub-hero-subtitle { font-size: 1.1rem; color: #cbd5e1; font-weight: 400; }
+
+    .pub-container { max-width: 900px; margin: 60px auto; padding: 0 5%; }
+    
+    .year-section { margin-bottom: 60px; }
+  .year-heading {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #003087; /* 调整为 NTU 官方蓝 */
+      padding-bottom: 10px;
+      border-bottom: 1px solid #e2e8f0;
+      margin-bottom: 20px;
+    }
+
+    .paper-item { margin-bottom: 35px; }
+    
+    .paper-title {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #0f172a;
+      display: inline-block;
+      margin-bottom: 10px;
+      line-height: 1.5;
+      text-decoration: none; /* 移除下划线 */
+    }
+    
+    .paper-meta { 
+      font-size: 1rem; 
+      color: #475569; /* 颜色调灰 */
+      margin-bottom: 10px; 
+      line-height: 1.5; 
+    }
+    
+    .paper-links { display: flex; gap: 15px; margin-bottom: 8px; }
+    .btn-link { 
+      font-size: 0.95rem; 
+      font-weight: 700; 
+      color: #1e293b; 
+      text-decoration: none; 
+      background: none;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      font-family: inherit;
+    }
+    .btn-link:hover { color: #ce1126; }
+
+    .abstract-content {
+      display: none;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: #334155;
+      background: #f8fafc;
+      padding: 15px 20px;
+      border-left: 2px solid #94a3b8;
+      margin-top: 8px;
+    }
+
+    @media (max-width: 768px) {
+      .pub-hero { height: 30vh; min-height: 200px; }
+      .pub-hero-title { font-size: 2.2rem; }
+      .pub-container { margin: 40px auto; }
+      .year-heading { font-size: 1.6rem; margin-bottom: 20px; }
+      .paper-title { font-size: 1.05rem; }
+      .paper-meta { font-size: 0.95rem; }
+    }
+  </style>
+
+  <header class="pub-hero">
+    <div class="pub-hero-bg" style={`background-image: url(${heroBgImage});`}></div>
+    <div class="pub-hero-content">
+      <h1 class="pub-hero-title">Publications</h1>
+      <p class="pub-hero-subtitle">Human AI-Interaction Lab</p>
+    </div>
+  </header>
+
+  <main class="pub-container">
+   {publications.map((section: any) => (
+      <div class="year-section">
+        <h2 class="year-heading">{section.year}</h2>
+        {section.papers.map((paper: any) => (
+          <div class="paper-item">
+            <span class="paper-title">{paper.title}</span>
+            <p class="paper-meta">
+              {paper.authors} ({section.year}). <span set:html={paper.journalInfo}></span>
+            </p>
+            
+          <div class="paper-links">
+              {paper.abstract && (
+                <button class="btn-link abstract-btn" data-target={paper.id}>[Abstract]</button>
+              )}
+              {/* 兼容 doi 和 url 两种情况 */}
+              {(paper.doi || paper.url) && (
+                <a href={paper.doi ? `https://doi.org/${paper.doi}` : paper.url} target="_blank" rel="noopener noreferrer" class="btn-link">[Paper]</a>
+              )}
+            </div>
+            
+            {paper.abstract && (
+              <div id={paper.id} class="abstract-content">
+                <strong></strong> <span set:html={paper.abstract}></span>
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+    ))}
+  </main>
+
+  <script is:inline>
+    document.addEventListener('DOMContentLoaded', () => {
+      const buttons = document.querySelectorAll('.abstract-btn');
+      buttons.forEach(button => {
+        button.addEventListener('click', () => {
+          const targetId = button.getAttribute('data-target');
+          const abstractDiv = document.getElementById(targetId);
+          
+          if (abstractDiv.style.display === 'block') {
+            abstractDiv.style.display = 'none';
+          } else {
+            abstractDiv.style.display = 'block';
+          }
+        });
+      });
+    });
+  </script>
+</MainLayout>
