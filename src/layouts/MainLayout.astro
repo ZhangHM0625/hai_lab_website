@@ -18,31 +18,101 @@ const logoImage = `${import.meta.env.BASE_URL}/ntu-logo.png`;
     html { scroll-behavior: smooth; }
     body { font-family: 'Inter', sans-serif; overflow-x: hidden; width: 100%; }
 
-    /* 固定导航栏 CSS */
+    /* 导航栏基础布局 */
     .navbar {
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 1rem 5%; background: white; 
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center;
+      padding: 1rem 5%; 
+      background: white; 
       position: sticky; 
       top: 0; 
       z-index: 1000; 
       border-bottom: 1px solid #f1f5f9;
       width: 100%;
     }
-    .logo-module { display: flex; align-items: center; text-decoration: none; color: inherit; }
-    .university-logo { height: 45px; border-right: 1px solid #e2e8f0; padding-right: 15px; margin-right: 20px; }
-    .nav-links { display: flex; gap: 30px; list-style: none; }
-    .nav-links a { text-decoration: none; color: #475569; font-weight: 500; font-size: 0.9rem; transition: 0.3s; }
+    
+    .logo-module { 
+      display: flex; 
+      align-items: center; 
+      text-decoration: none; 
+      color: inherit; 
+      flex-shrink: 0; 
+    }
+    
+    /* 大屏下的校徽样式（带分割线） */
+    .university-logo { 
+      height: 45px; 
+      border-right: 1px solid #e2e8f0; 
+      padding-right: 15px; 
+      margin-right: 20px; 
+    }
+
+    /* 文字包装容器 */
+    .logo-text-wrapper { 
+      display: flex; 
+      flex-direction: column; 
+      line-height: 1.1; 
+    }
+
+    /* 导航链接 */
+    .nav-links { 
+      display: flex; 
+      gap: 30px; 
+      list-style: none; 
+      flex-shrink: 0; 
+    }
+    .nav-links a { 
+      text-decoration: none; 
+      color: #475569; 
+      font-weight: 500; 
+      font-size: 0.9rem; 
+      transition: 0.3s; 
+      white-space: nowrap; 
+    }
     .nav-links a:hover { color: var(--ntu-red); }
 
-    /* 手机端专项适配修复 */
+    /* --------------------------------------------------------- */
+    /* 响应式调整 */
+    /* --------------------------------------------------------- */
+
+    /* 中等屏幕（平板等）：缩小间距，保持文字 */
     @media (max-width: 768px) {
       .navbar { padding: 0.8rem 3%; }
-      .logo-module {
-        transform: scale(0.85); /* 缩小 Logo 模块腾出空间 */
-        transform-origin: left;
+      .nav-links { gap: 12px; }
+      .nav-links a { font-size: 0.8rem; }
+      .university-logo { height: 35px; margin-right: 10px; padding-right: 10px; }
+    }
+
+    /* 窄屏极限模式 (< 480px)：去掉文字，仅保留校徽图标 */
+    @media (max-width: 480px) {
+      /* 1. 彻底移除 HAIL 和 WKWSCI 文字 */
+      .logo-text-wrapper { 
+        display: none !important; 
       }
-      .nav-links { gap: 10px; }
-      .nav-links a { font-size: 0.75rem; white-space: nowrap; }
+
+      /* 2. 移除校徽右侧的分割线和间距，释放空间 */
+      .university-logo { 
+        border-right: none; 
+        padding-right: 0; 
+        margin-right: 5px; /* 只留极小间距 */
+        height: 32px; 
+      }
+
+      /* 3. 调整链接间距和字号，确保它们在校徽右侧排成一行 */
+      .nav-links { 
+        gap: 8px; 
+      }
+      .nav-links a { 
+        font-size: 0.75rem; 
+        letter-spacing: -0.3px; 
+      }
+    }
+
+    /* 针对超窄屏 (如 iPhone SE) 的最终补丁 */
+    @media (max-width: 340px) {
+      .nav-links { gap: 5px; }
+      .nav-links a { font-size: 0.7rem; }
     }
   </style>
 </head>
@@ -50,7 +120,7 @@ const logoImage = `${import.meta.env.BASE_URL}/ntu-logo.png`;
   <nav class="navbar">
     <a href={`${import.meta.env.BASE_URL}/`} class="logo-module">
       <img src={logoImage} alt="NTU Logo" class="university-logo" />
-      <div style="display: flex; flex-direction: column; line-height: 1.1;">
+      <div class="logo-text-wrapper">
         <span style="font-weight: 800; font-size: 1.4rem;">{labName}</span>
         <span style="font-size: 0.8rem; color: #727c8a; font-weight: 600;">{school}</span>
       </div>
@@ -63,7 +133,9 @@ const logoImage = `${import.meta.env.BASE_URL}/ntu-logo.png`;
     </ul>
   </nav>
 
-  <slot />
+  <main>
+    <slot />
+  </main>
 
   <footer style="padding: 40px; text-align: center; border-top: 1px solid #f1f5f9; background: #f8fafc;">
     <p style="font-size: 0.8rem; color: #94a3b8;">© 2026 Human AI-Interaction Lab. All Rights Reserved.</p>

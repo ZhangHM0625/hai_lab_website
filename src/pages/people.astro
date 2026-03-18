@@ -4,7 +4,7 @@ import MainLayout from '../layouts/MainLayout.astro';
 // 背景图
 const heroBgImage = `${import.meta.env.BASE_URL}/people-bg.png`;
 
-// 实验室现任成员数据
+// 实验室现任成员数据 - 已全部补齐
 const peopleData = [
   {
     id: "kwan-min-lee",
@@ -80,265 +80,97 @@ const peopleData = [
   }
 ];
 
-// 校友数据（仅保留姓名和图片，Bio 暂不渲染）
 const alumniData = [
-  {
-    name: "Dr Won Young Chung",
-    image: `${import.meta.env.BASE_URL}/people/won-young-chung.jpg`,
-  },
-  {
-    name: "Pragya Chandel",
-    image: `${import.meta.env.BASE_URL}/people/pragya-chandel.jpg`,
-  },
-  {
-    name: "Kaiyuan Tang",
-    image: `${import.meta.env.BASE_URL}/people/kaiyuan-tang.jpg`,
-  },
-  {
-    name: "Jiaxi Liu",
-    image: `${import.meta.env.BASE_URL}/people/jiaxi-liu.jpg`,
-  },
-  {
-    name: "Haodong Sun",
-    image: `${import.meta.env.BASE_URL}/people/haodong-sun.jpg`,
-  }
+  { name: "Dr Won Young Chung", image: `${import.meta.env.BASE_URL}/people/won-young-chung.jpg` },
+  { name: "Pragya Chandel", image: `${import.meta.env.BASE_URL}/people/pragya-chandel.jpg` },
+  { name: "Kaiyuan Tang", image: `${import.meta.env.BASE_URL}/people/kaiyuan-tang.jpg` },
+  { name: "Jiaxi Liu", image: `${import.meta.env.BASE_URL}/people/jiaxi-liu.jpg` },
+  { name: "Haodong Sun", image: `${import.meta.env.BASE_URL}/people/haodong-sun.jpg` }
 ];
 ---
 
 <MainLayout title="People">
   <style>
-    /* 从左到右出场动画 */
+    /* 统一动画 */
     @keyframes slideInFromLeft {
-      0% { opacity: 0; transform: translateX(-40px); }
+      0% { opacity: 0; transform: translateX(-30px); }
       100% { opacity: 1; transform: translateX(0); }
     }
 
-    /* Hero 区域 */
+    /* --- Hero 区域：与 Publications 绝对对齐 --- */
     .people-hero {
       position: relative;
-      height: 20vh;
+      height: 40vh;
       min-height: 300px;
       display: flex;
       align-items: center;
-      padding: 0 var(--global-padding);
+      padding: 0 20px;
       color: white;
       background-color: #050505;
       overflow: hidden;
     }
-    
     .people-hero-bg {
-      position: absolute;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background-size: cover;
-      background-position: center;
-      opacity: 0.5;
-      z-index: 1;
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      background-size: cover; background-position: center; opacity: 0.5; z-index: 1;
     }
-    
     .people-hero-content {
-      position: relative;
-      z-index: 2;
-      max-width: 1000px;
-      margin: 0 auto;
-      width: 100%;
+      position: relative; z-index: 2;
+      max-width: 1000px; /* 锁定中轴线宽度 */
+      margin: 0 auto; width: 100%;
       animation: slideInFromLeft 0.8s ease-out forwards;
     }
-    
-    .people-hero-title { 
-      font-size: 2.8rem; 
-      font-weight: 700; 
-      margin-bottom: 0.1rem; 
-      letter-spacing: -0.5px; 
-    }
-    
-    .people-hero-subtitle { 
-      font-size: 1.3rem; 
-      color: #cbd5e1; 
-      font-weight: 400; 
-    }
+    .people-hero-title { font-size: 3rem; font-weight: 700; margin-bottom: 0.5rem; letter-spacing: -0.5px; }
+    .people-hero-subtitle { font-size: 1.1rem; color: #cbd5e1; font-weight: 400; }
 
-    /* 人员列表区域 */
+    /* --- 内容容器：与 Publications 绝对对齐 --- */
     .people-container { 
-      max-width: 900px; 
-      margin: 80px auto; 
-      padding: 0 5%; 
+      max-width: 900px; /* 锁定正文宽度 */
+      margin: 60px auto; 
+      padding: 0 20px; 
       display: flex;
       flex-direction: column;
     }
 
-    /* 现任成员列表布局 */
-    .current-members {
-      display: flex;
-      flex-direction: column;
-      gap: 60px;
-      margin-bottom: 60px;
-    }
-
-    /* 单个卡片布局 (左图右文) */
-    .person-card {
-      display: flex;
-      gap: 30px; 
-      opacity: 0; 
-      animation: slideInFromLeft 0.8s ease-out forwards;
-    }
-
-    /* 卡片动画延迟 */
+    /* 成员列表布局 */
+    .current-members { display: flex; flex-direction: column; gap: 60px; margin-bottom: 80px; }
+    .person-card { display: flex; gap: 40px; opacity: 0; animation: slideInFromLeft 0.8s ease-out forwards; }
     .person-card:nth-child(1) { animation-delay: 0.1s; }
     .person-card:nth-child(2) { animation-delay: 0.2s; }
-    .person-card:nth-child(3) { animation-delay: 0.3s; }
-    .person-card:nth-child(n+4) { animation-delay: 0.4s; }
+    .person-card:nth-child(n+3) { animation-delay: 0.3s; }
 
-    /* 左侧照片与图标 */
-    .person-left {
-      flex: 0 0 240px; 
-      display: flex;
-      flex-direction: column;
-      align-items: center; 
-    }
+    .person-left { flex: 0 0 240px; display: flex; flex-direction: column; align-items: center; }
+    .person-image { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; background-color: #f1f5f9; border-radius: 4px; }
+    .person-icons { margin-top: 15px; display: flex; gap: 15px; }
+    .icon-link { color: #64748b; transition: 0.2s; display: flex; align-items: center; }
+    .icon-link:hover { color: #003087; transform: translateY(-2px); }
 
-    .person-image {
-      width: 100%;
-      aspect-ratio: 4 / 5; 
-      object-fit: cover;
-      background-color: #f1f5f9;
-      border-radius: 4px;
-    }
+    .person-right { flex: 1; }
+    .person-name { font-size: 1.6rem; font-weight: 700; color: #0f172a; padding-bottom: 12px; border-bottom: 1px solid #e2e8f0; margin-bottom: 15px; line-height: 1.2; }
+    .person-title { font-size: 1rem; font-weight: 600; text-transform: uppercase; color: #003087; margin-bottom: 12px; letter-spacing: 0.5px; }
+    .person-bio { font-size: 0.95rem; line-height: 1.6; color: #334155; }
 
-    .person-icons {
-      margin-top: 15px;
-      display: flex;
-      gap: 15px;
-    }
+    /* 校友网格 */
+    .alumni-header { margin-top: 20px; margin-bottom: 15px; animation: slideInFromLeft 0.8s ease-out forwards; }
+    .alumni-title { font-size: 1.8rem; font-weight: 800; color: #000; border-bottom: 1px solid #e2e8f0; padding-bottom: 8px; width: 100%; }
+    .alumni-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; animation: slideInFromLeft 0.8s ease-out forwards; }
+    .alumni-card { background: white; border: 1px solid #e2e8f0; border-radius: 3px; overflow: hidden; }
+    .alumni-img-wrapper { width: 100%; aspect-ratio: 1 / 1; padding: 5px; background: #fff; }
+    .alumni-img { width: 100%; height: 100%; object-fit: cover; }
+    .alumni-name { font-size: 1rem; font-weight: 500; color: #0f172a; padding: 5px 10px 15px 10px; text-align: center; }
 
-    .icon-link {
-      color: #64748b;
-      transition: color 0.2s ease, transform 0.2s ease;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .icon-link:hover {
-      color: #003087; 
-      transform: translateY(-2px);
-    }
-
-    /* 右侧文字信息 */
-    .person-right {
-      flex: 1; 
-      display: flex;
-      flex-direction: column;
-    }
-
-    .person-name {
-      font-size: 1.8rem;
-      font-weight: 700;
-      color: #0f172a;
-      padding-bottom: 12px;
-      border-bottom: 1px solid #e2e8f0; 
-      margin-bottom: 15px;
-      line-height: 1.2;
-    }
-
-    .person-title {
-      font-size: 1.1rem;
-      font-weight: 600;
-      text-transform: uppercase; 
-      color: #003087; 
-      margin-bottom: 10px;
-      letter-spacing: 0.5px;
-    }
-
-    .person-bio {
-      font-size: 1rem;
-      line-height: 1.4;
-      color: #334155;
-    }
-
-    /* ========================================================= */
-    /* 校友区域 (Alumni) 静态网格样式 */
-    /* ========================================================= */
-    
-    .alumni-header {
-      margin: 20px 0 15px 0;
-      opacity: 0;
-      animation: slideInFromLeft 0.8s ease-out forwards;
-      animation-delay: 0.5s;
-    }
-    
-    .alumni-title {
-      font-size: 1.8rem;
-      font-weight: 800;
-      color: #000000;
-      display: inline-block;
-      padding-bottom: 5px;
-      width: 100%;
-    }
-
-    /* 强制一行 3 列 */
-    .alumni-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 25px;
-      opacity: 0;
-      animation: slideInFromLeft 0.8s ease-out forwards;
-      animation-delay: 0.6s;
-    }
-
-    .alumni-card {
-      background: white;
-      border: 1px solid #e2e8f0;
-      border-radius: 3px;
-      overflow: hidden;
-    }
-
-    .alumni-img-wrapper {
-      width: 100%;
-      aspect-ratio: 1 / 1;
-      padding: 5px; /* 照片外侧留白框 */
-      background: #fff;
-    }
-
-    .alumni-img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 2px;
-    }
-
-    .alumni-name {
-      font-size: 1.05rem;
-      font-weight: 500;
-      color: #0f172a;
-      padding: 5px 10px 15px 10px;
-      text-align: center;
-    }
-
-    /* 移动端适配 */
+    /* --- 响应式适配 --- */
     @media (max-width: 768px) {
-      .people-hero { height: 30vh; min-height: 200px; }
+      .people-hero { height: 35vh; min-height: 250px; }
+      .people-hero-title { font-size: 2.5rem; }
+      .people-container { margin: 40px auto; }
+      .person-card { flex-direction: column; gap: 25px; align-items: center; text-align: center; }
+      .person-left { flex: 0 0 auto; width: 100%; max-width: 280px; }
+      .person-icons { justify-content: center; }
+      .alumni-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; }
+    }
+    @media (max-width: 480px) {
+      .people-hero { height: 30vh; min-height: 220px; }
       .people-hero-title { font-size: 2.2rem; }
-      .people-container { margin: 40px auto; gap: 50px; }
-      
-      .person-card {
-        flex-direction: column;
-        gap: 20px;
-      }
-      
-      .person-left {
-        flex: 0 0 auto;
-        width: 100%;
-        max-width: 260px; 
-        align-items: flex-start; 
-      }
-      
-      .person-name { font-size: 1.5rem; }
-      
-      /* 手机端改为一行 2 列 */
-      .alumni-grid { 
-        grid-template-columns: repeat(2, 1fr); 
-        gap: 15px; 
-      }
     }
   </style>
 
@@ -351,52 +183,38 @@ const alumniData = [
   </header>
 
   <main class="people-container">
-    
-    {/* 现任成员区域 */}
     <div class="current-members">
-      {peopleData.map((person: any) => (
+      {peopleData.map((person) => (
         <div class="person-card">
-          
           <div class="person-left">
             <img src={person.image} alt={person.name} class="person-image" loading="lazy" />
-            
             <div class="person-icons">
               {person.scholar && (
-                <a href={person.scholar} target="_blank" rel="noopener noreferrer" class="icon-link" aria-label="Google Scholar">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
-                    <path d="M6 12v5c3 3 9 3 12 0v-5"/>
-                  </svg>
+                <a href={person.scholar} target="_blank" class="icon-link">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
                 </a>
               )}
               {person.website && (
-                <a href={person.website} target="_blank" rel="noopener noreferrer" class="icon-link" aria-label="External Website">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="12" cy="12" r="10"></circle>
-                    <line x1="2" y1="12" x2="22" y2="12"></line>
-                    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
-                  </svg>
+                <a href={person.website} target="_blank" class="icon-link">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
                 </a>
               )}
             </div>
           </div>
-
           <div class="person-right">
             <h2 class="person-name">{person.name}</h2>
             <div class="person-title">{person.title}</div>
             <p class="person-bio">{person.bio}</p>
           </div>
-
         </div>
       ))}
     </div>
 
-    {/* 校友区域 (静态网格) */}
     <div class="alumni-header">
       <h2 class="alumni-title">Alumni</h2>
     </div>
     <div class="alumni-grid">
-      {alumniData.map((alumni: any) => (
+      {alumniData.map((alumni) => (
         <div class="alumni-card">
           <div class="alumni-img-wrapper">
             <img src={alumni.image} alt={alumni.name} class="alumni-img" loading="lazy" />
@@ -405,6 +223,5 @@ const alumniData = [
         </div>
       ))}
     </div>
-
   </main>
 </MainLayout>
