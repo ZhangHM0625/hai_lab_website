@@ -5,7 +5,33 @@ const heroBgImage = `${import.meta.env.BASE_URL}/pub-bg.png`;
 
 // 数据结构已更新：使用 journalInfo 字段精确控制 APA 斜体格式
 const publications: any[] = [
-  {
+{
+    year: "2026",
+    papers: [
+      {
+        id: "pub-2026-1",
+        title: "Title to be updated",
+        authors: "Author(s) to be updated",
+        journalInfo: "<em>Journal to be updated</em>.",
+        abstract: "Abstract to be updated."
+      },
+      {
+        id: "pub-2026-2",
+        title: "Title to be updated",
+        authors: "Author(s) to be updated",
+        journalInfo: "<em>Journal to be updated</em>.",
+        abstract: "Abstract to be updated."
+      },
+      {
+        id: "pub-2026-3",
+        title: "Title to be updated",
+        authors: "Author(s) to be updated",
+        journalInfo: "<em>Journal to be updated</em>.",
+        abstract: "Abstract to be updated."
+      }
+    ]
+  },  
+{
     year: "2025",
     papers: [
       {
@@ -109,7 +135,7 @@ const publications: any[] = [
         authors: "Stavropoulos, V., Ratan, R., & Lee, K. M.",
         journalInfo: "<em>Frontiers in Psychology, 13</em>, 923146.",
         doi: "10.3389/fpsyg.2022.923146",
-        abstract: "updated"
+        abstract: ""
       }
     ]
   },
@@ -588,7 +614,7 @@ const publications: any[] = [
       /* 为 Hero 内容添加动画 */
       animation: slideInFromLeft 0.8s ease-out forwards;
     }
-    .pub-hero-title { font-size: 2.8rem; font-weight: 700; margin-bottom: 0.1rem; letter-spacing: -0.5px; }
+    .pub-hero-title { font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 800; margin-bottom: 0.1rem; letter-spacing: -0.01em; }
     .pub-hero-subtitle { font-size: 1.2rem; color: #cbd5e1; font-weight: 400; }
 
     .pub-container { max-width: 900px; margin: 60px auto; padding: 0 5%; }

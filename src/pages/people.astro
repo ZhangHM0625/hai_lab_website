@@ -8,21 +8,12 @@ const heroBgImage = `${import.meta.env.BASE_URL}/people-bg.png`;
 const peopleData = [
   {
     id: "kwan-min-lee",
-    name: "Professor Kwan Min Lee",
+    name: "Kwan Min Lee",
     title: "Korea Foundation Professor",
     image: `${import.meta.env.BASE_URL}/people/kwan-min-lee.jpg`,
     website: "https://kwanminlee.com/", 
     scholar: "",
     bio: "Professor Lee is a leading scholar in UX research, HCI, and digital culture. Formerly a VP at Samsung Electronics, he has published extensively, led $12M+ in funded research, and directs the Human AI-Interaction Lab (HAIL)."
-  },
-  {
-    id: "kyung-won-cho",
-    name: "Dr Kyung-Won Cho",
-    title: "Lab Member",
-    image: `${import.meta.env.BASE_URL}/people/kyung-won-cho.jpg`,
-    website: "",
-    scholar: "",
-    bio: "Kyung-Won Cho received his Ph.D. in Computer Engineering from Honam University, Korea (2024), following an M.S. in Intelligent Robotics at GIST (2021) and a B.S. in Software Development at the University of Newcastle, Australia (2017). His research spans computer vision for aquaculture/medical imaging, texture-aware segmentation, and Generative AI for education. He is currently a Visiting Scholar at Nanyang Technological University (Wee Kim Wee School of Communication and Information)."
   },
   {
     id: "shreya-gopi",
@@ -81,6 +72,7 @@ const peopleData = [
 ];
 
 const alumniData = [
+  { name: "Dr Kyung-Won Cho", image: `${import.meta.env.BASE_URL}/people/kyung-won-cho.jpg` },
   { name: "Dr Won Young Chung", image: `${import.meta.env.BASE_URL}/people/won-young-chung.jpg` },
   { name: "Pragya Chandel", image: `${import.meta.env.BASE_URL}/people/pragya-chandel.jpg` },
   { name: "Kaiyuan Tang", image: `${import.meta.env.BASE_URL}/people/kaiyuan-tang.jpg` },
@@ -119,7 +111,7 @@ const alumniData = [
       margin: 0 auto; width: 100%;
       animation: slideInFromLeft 0.8s ease-out forwards;
     }
-    .people-hero-title { font-size: 2.8rem; font-weight: 700; margin-bottom: 0.1rem; letter-spacing: -0.5px; }
+    .people-hero-title { font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 800; margin-bottom: 0.1rem; letter-spacing: -0.01em; }
     .people-hero-subtitle { font-size: 1.2rem; color: #cbd5e1; font-weight: 400; }
 
     /* --- 内容容器：与 Publications 绝对对齐 --- */
@@ -145,7 +137,7 @@ const alumniData = [
     .icon-link:hover { color: #003087; transform: translateY(-2px); }
 
     .person-right { flex: 1; }
-    .person-name { font-size: 1.6rem; font-weight: 700; color: #0f172a; padding-bottom: 12px; border-bottom: 1px solid #e2e8f0; margin-bottom: 15px; line-height: 1.2; }
+    .person-name { font-size: 1.4rem; font-weight: 700; color: #0f172a; padding-bottom: 12px; border-bottom: 1px solid #e2e8f0; margin-bottom: 15px; line-height: 1.2; }
     .person-title { font-size: 1rem; font-weight: 600; text-transform: uppercase; color: #003087; margin-bottom: 12px; letter-spacing: 0.5px; }
     .person-bio { font-size: 0.95rem; line-height: 1.6; color: #334155; }
 

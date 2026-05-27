@@ -1,128 +1,160 @@
 ---
 import MainLayout from '../layouts/MainLayout.astro';
 
-/** * 【HAIL 实验室主页 - 首页内容版】 */
 const labName = "HAIL";
-const email = "HEMING001@e.ntu.edu.sg"; 
-
-// 自动适配 GitHub Pages 子路径
+const email = "kwanminlee@ntu.edu.sg";
 const heroBgImage = "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2000";
-
-const affiliation = "ASIAN COMMUNICATION RESEARCH CENTRE (ACRC) | NTU";
+const affiliation = "Nanyang Technological University | WKWSCI";
 const fullLabName = "Human AI-Interaction Lab";
 const slogan = "Advancing Psychologically Aligned and Ethically Designed AI Systems for a Trustworthy Future of Human-AI Interaction.";
 ---
 
 <MainLayout title="Home">
   <style>
-    /* --- 1. Hero 区域样式 (保持 PC 端效果) --- */
-    .hero-wrapper { 
-        padding-bottom: 20px; 
-        background: #fff; 
-        scroll-margin-top: 100px; 
-    }
+    /* --- 1. Hero --- */
+    .hero-wrapper { background: #fff; }
     .hero {
-      position: relative;
-      height: 85vh;
-      width: 100%;
-      background-color: #050505;
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-      color: white;
-      overflow: hidden;
+      position: relative; height: 85vh; width: 100%;
+      background-color: #050505; display: flex;
+      align-items: center; justify-content: flex-start;
+      color: white; overflow: hidden;
     }
     .hero-bg {
-      position: absolute;
-      top: 0; left: 0; width: 100%; height: 100%;
-      z-index: 1;
-      background-size: cover;
-      background-position: center;
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      z-index: 1; background-size: cover; background-position: center;
     }
-
     @keyframes fadeInUp {
-        from { opacity: 0; transform: translateY(50px); }
-        to { opacity: 1; transform: translateY(-20px); }
+      from { opacity: 0; transform: translateY(50px); }
+      to   { opacity: 1; transform: translateY(-20px); }
     }
-
-    .hero-content { 
-        position: relative; 
-        z-index: 5; 
-        width: 100%; 
-        max-width: 1200px; 
-        padding: 0 5%; 
-        text-align: left;
-        animation: fadeInUp 1.5s ease-out forwards;
+    .hero-content {
+      position: relative; z-index: 5; width: 100%;
+      max-width: 1200px; padding: 0 5%; text-align: left;
+      animation: fadeInUp 1.5s ease-out forwards;
     }
-
-    .hero-affiliation { font-size: 1rem; font-weight: 700; margin-bottom: 1rem; letter-spacing: 0.05em; color: white; }
-    .hero-title { font-size: 3.5rem; font-weight: 800; line-height: 1.0; margin-bottom: 0.5rem; max-width: 800px; }
-    .hero-slogan { font-size: 1.1rem; color: #bbc5d0; font-weight: 400; line-height: 1.4; max-width: 900px; }
-
+    .hero-affiliation {
+      font-size: 1rem; font-weight: 700; margin-bottom: 1rem;
+      letter-spacing: 0.05em; color: white;
+    }
+    .hero-title {
+      font-size: 3.5rem; font-weight: 800; line-height: 1.0;
+      margin-bottom: 0.5rem; max-width: 800px;
+    }
+    .hero-slogan {
+      font-size: 1.1rem; color: #bbc5d0;
+      font-weight: 400; line-height: 1.4; max-width: 900px;
+    }
     .scroll-hint {
-      position: absolute;
-      bottom: 30px;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 3;
-      text-decoration: none;
-      color: rgba(255, 255, 255, 0.5);
-      font-size: 1.2rem;
-      transition: 0.3s;
+      position: absolute; bottom: 30px; left: 50%;
+      transform: translateX(-50%); z-index: 3;
+      text-decoration: none; color: rgba(255,255,255,0.5);
+      font-size: 1.2rem; transition: 0.3s;
     }
     .scroll-hint:hover { color: white; transform: translateX(-50%) translateY(5px); }
 
-    /* --- 2. Research Focus 区域样式 --- */
+    /* --- 2. Research Focus --- */
     #content-section { scroll-margin-top: 80px; }
     #research-focus {
-      max-width: 1050px;
-      margin: 60px auto 60px; 
-      padding: 0 5%;
+      max-width: 1050px; margin: 0 auto; padding: 70px 5%;
       text-align: center;
     }
-    .area-title { font-size: 1.9rem; font-weight: 800; margin-bottom: 60px; text-transform: uppercase; letter-spacing: 1.5px; }
-    .research-flex { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; }
-    .focus-card {
-      flex: 0 1 calc(33.33% - 15px);
-      min-width: 270px;
-      background: linear-gradient(145deg, #ffffff, #f9fafb);
-      padding: 35px 25px;
-      border-radius: 12px;
-      border: 1px solid #f1f5f9;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.02);
-      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    .area-title {
+      font-size: 1.9rem; font-weight: 800;
+      margin-bottom: 16px; text-transform: uppercase; letter-spacing: 1.5px;
+      color: #0f172a;
+    }
+    .title-divider {
+      width: 48px; height: 3px; background: #ce1126;
+      border-radius: 2px; margin: 0 auto 50px;
+    }
+    .research-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      align-items: start;
+    }
+    .research-card {
+      background: white;
+      border: 1px solid #e8ecf0;
+      border-radius: 14px;
+      padding: 28px 24px;
       text-align: left;
+      cursor: pointer;
+      align-self: start;
+      min-height: 175px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
     }
-    .focus-card:hover { transform: translateY(-8px); border-color: #ce1126; box-shadow: 0 15px 35px rgba(206, 17, 38, 0.08); }
-    .focus-card h3 { font-size: 1rem; color: #0f172a; line-height: 1.4; font-weight: 700; }
-
-    /* --- 3. Footer 联系区域 (仅包含按钮逻辑) --- */
-    .contact-footer { padding: 40px 5%; text-align: center; background: #f8fafc; border-top: 1px solid #f1f5f9; }
-    .footer-text { font-size: 0.85rem; color: #727c8a; margin-bottom: 10px; line-height: 1.3; }
-    .copy-btn {
-      margin-top: 12px; padding: 10px 32px; background: #1e293b; color: white;
-      border-radius: 40px; font-size: 0.85rem; font-weight: 500; cursor: pointer; border: none; transition: 0.3s;
+    .research-card.dashed {
+      border-style: dashed; background: white;
     }
-    .copy-btn:hover { background: #ce1126; transform: scale(1.05); }
+    .research-card.dashed .card-desc { display: none !important; }
+    .research-card.dashed:active { transform: none; box-shadow: none; }
+    .research-card.dashed:focus { outline: none; 
+    }
+    .research-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.07);
+      border-color: #ce1126;
+    }
+    .card-emoji {
+      font-size: 2rem; display: block;
+      margin-bottom: 1rem; line-height: 1;
+    }
+    .card-title {
+      font-size: 1rem; font-weight: 700; color: #0f172a;
+      line-height: 1.4; margin: 0;
+    }
+    .card-desc {
+      display: none;
+      font-size: 0.85rem; color: #64748b; line-height: 1.75;
+      margin: 0; padding-top: 0.8rem;
+      border-top: 1px solid #e8ecf0; margin-top: 0.8rem;
+    }
+    .research-card.open .card-desc { display: block; }
 
-    /* --- 4. 手机端专项适配修复 --- */
+  /* --- 3. Contact Footer --- */
+    .contact-footer {
+      background: #f8fafc; border-top: 1px solid #f1f5f9;
+      padding: 60px 5%;
+    }
+    .contact-inner {
+      max-width: 860px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 120px; align-items: start;
+    }
+    .contact-address p {
+      font-size: 0.88rem; color: #475569;
+      line-height: 1.9; margin: 0;
+    }
+    .contact-address strong {
+      color: #0f172a; font-weight: 700;
+    }
+    .contact-right { text-align: left; }
+    .footer-label {
+      font-size: 0.88rem; font-weight: 700;
+      color: #0f172a; margin-bottom: 0.6rem;
+    }
+    .footer-email {
+      font-size: 0.88rem; color: #ce1126;
+      text-decoration: none;
+    }
+    .footer-email:hover { text-decoration: underline; }
+
+    @media (max-width: 680px) {
+    .contact-inner { grid-template-columns: 1fr; gap: 40px; }
+    }
+
+    /* --- 4. 响应式 --- */
+    @media (max-width: 900px) { .research-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 560px) { .research-grid { grid-template-columns: 1fr; } }
     @media (max-width: 768px) {
       .hero { height: 70vh; min-height: 420px; }
       .hero-title { font-size: 9vw; }
       .hero-slogan { font-size: 3.5vw; line-height: 1.3; }
-      .area-title { font-size: 6vw; margin-bottom: 8vw; }
-      .focus-card {
-        flex: 0 1 100%; 
-        padding: 5vw 6vw; 
-        min-height: 20vw; 
-        display: flex;
-        align-items: center; 
-        border-radius: 10px;
-      }
-      .focus-card h3 { font-size: 4.5vw; }
     }
   </style>
 
+  <!-- Hero -->
   <div id="home" class="hero-wrapper">
     <header class="hero">
       <div class="hero-bg" style={`background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.8)), url(${heroBgImage});`}></div>
@@ -135,36 +167,91 @@ const slogan = "Advancing Psychologically Aligned and Ethically Designed AI Syst
     </header>
   </div>
 
+  <!-- Research Focus -->
   <div id="content-section">
     <main id="research-focus">
       <h2 class="area-title">Research Focus</h2>
-      <div class="research-flex">
-          <div class="focus-card"><h3>AI Agent Design & <br/>User Experience</h3></div>
-          <div class="focus-card"><h3>AI-Enhanced <br/>Research Methods</h3></div>
-          <div class="focus-card"><h3>Explainable AI & <br/>User Understanding</h3></div>
-          <div class="focus-card"><h3>Immersive AI <br/>Experiences</h3></div>
-          <div class="focus-card"><h3>AI Ethics, <br/>Philosophy & Policy</h3></div>
+      <div class="title-divider"></div>
+
+      <div class="research-grid">
+
+        <div class="research-card">
+          <span class="card-emoji">🤖</span>
+          <div class="card-title">AI Agent Design & User Experience</div>
+          <p class="card-desc">Investigating how design decisions in AI systems shape user experiences and psychological responses. We examine personality traits, communication styles, interface embodiment, and interaction modalities across diverse applications—from virtual influencers and robo-advisors to conversational assistants and autonomous vehicle interfaces. Our research addresses both the opportunities and challenges of human-AI relationships, developing evidence-based design principles for trustworthy and engaging AI systems.</p>
+        </div>
+
+        <div class="research-card">
+          <span class="card-emoji">🔬</span>
+          <div class="card-title">AI-Enhanced Research Methods</div>
+          <p class="card-desc">Developing innovative methodologies that leverage AI as a research collaborator in social science investigations. This includes creating synthetic research panels or artificial societies that can simulate diverse human populations and perspectives, enabling researchers to pre-test hypotheses, explore complex social dynamics, and validate findings at scale with real-life interventions. We investigate how AI agents can complement traditional research methods while maintaining scientific rigor and ethical standards in behavioral and social research.</p>
+        </div>
+
+        <div class="research-card">
+          <span class="card-emoji">💡</span>
+          <div class="card-title">Explainable AI & User Understanding</div>
+          <p class="card-desc">Developing frameworks for transparent AI systems that users can understand and effectively collaborate with, particularly in high-stakes decision-making contexts where trust and comprehension are critical.</p>
+        </div>
+
+        <div class="research-card">
+          <span class="card-emoji">🌐</span>
+          <div class="card-title">Immersive AI Experiences</div>
+          <p class="card-desc">Exploring social presence and psychological responses in VR/AR environments and metaverse platforms where users interact with AI-driven agents (both virtual and physical).</p>
+        </div>
+
+        <div class="research-card">
+          <span class="card-emoji">⚖️</span>
+          <div class="card-title">AI Ethics, Philosophy & Policy</div>
+          <p class="card-desc">Examining the ethical implications of human-AI interaction, including questions of agency, responsibility, and digital personhood. We explore philosophical frameworks for understanding AI consciousness (and thus AI rights) claims, develop guidelines for responsible AI design, and contribute to policy discussions on AI governance and regulation</p>
+        </div>
+
+        <div class="research-card dashed">
+          <span class="card-emoji">🔍</span>
+          <div class="card-title">More Areas to Explore</div>
+          <p class="card-desc"></p>
+        </div>
+
       </div>
     </main>
 
+  <!-- Contact -->
     <section class="contact-footer">
-      <p class="footer-text">Thoughts? Ideas? Collaboration opportunities?</p>
-      <p class="footer-text">Get in touch with us</p>
-      <button class="copy-btn" id="copyEmail" data-email={email}>Email Us</button>
+      <div class="contact-inner">
+
+        <div class="contact-address">
+          <p>
+            <strong>Human-AI Interaction Lab</strong><br/>
+            4F, Wee Kim Wee School of Communication and Information<br/>
+            Nanyang Technological University<br/>
+            31 Nanyang Link, Singapore 637718
+          </p>
+        </div>
+
+        <div class="contact-right">
+          <p class="footer-label">Get in touch with us</p>
+          <p style="font-size: 0.88rem; color: #475569; margin-bottom: 0.3rem;">E-mail: <a href="mailto:kwanminlee@ntu.edu.sg" class="footer-email">kwanminlee@ntu.edu.sg</a></p>
+        </div>
+
+      </div>
     </section>
   </div>
 
   <script is:inline>
-    document.getElementById('copyEmail').addEventListener('click', function() {
+    document.getElementById('copyEmail').addEventListener('click', function () {
       const email = this.getAttribute('data-email');
       navigator.clipboard.writeText(email).then(() => {
-        const originalText = this.innerText;
         this.innerText = 'Copied!';
         this.style.background = '#ce1126';
         setTimeout(() => {
           this.innerText = 'Email Us';
           this.style.background = '#1e293b';
         }, 2000);
+      });
+    });
+
+    document.querySelectorAll('.research-card').forEach(card => {
+      card.addEventListener('click', () => {
+        card.classList.toggle('open');
       });
     });
   </script>

@@ -1,0 +1,334 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+---
+
+<MainLayout title="About Us">
+  <style>
+    :root { --red: #ce1126; --dark: #0f172a; --mid: #475569; --light: #f8fafc; }
+
+    .section { max-width: 860px; margin: 0 auto; padding: 32px 5% 70px; }
+    .section-label {
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--red); margin-bottom: 0.6rem;
+    }
+    .section-title {
+      font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 800;
+      color: var(--dark); margin-bottom: 1rem;
+    }
+    .section-divider {
+      width: 40px; height: 3px; background: var(--red);
+      margin-bottom: 2rem; border-radius: 2px;
+    }
+
+    .page-header { max-width: 860px; margin: 0 auto; padding: 48px 5% 0; }
+    .page-header h1 {
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 800; color: var(--dark);
+      margin-bottom: 0; letter-spacing: -0.01em;
+    }
+
+    .intro-body p { color: var(--mid); line-height: 1.9; font-size: 1rem; margin-bottom: 0; }
+    .address-block { margin-top: 2rem; display: flex; flex-direction: column; gap: 0.5rem; }
+    .address-block h3 {
+      font-size: 1.15rem; font-weight: 700; color: var(--dark);
+      margin-bottom: 0.8rem; letter-spacing: -0.01em;
+    }
+    .address-block p { font-size: 1rem; color: var(--mid); line-height: 1.9; margin: 0; }
+
+    .projects-section {
+      background: var(--light);
+      border-top: 1px solid #e2e8f0;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    .projects-inner { max-width: 860px; margin: 0 auto; padding: 70px 5%; }
+    .projects-grid { display: flex; flex-direction: column; gap: 0; }
+    .project-row {
+      display: grid; grid-template-columns: 80px 1fr;
+      gap: 0 28px; padding: 28px 0;
+      border-bottom: 1px solid #e2e8f0;
+      align-items: start; cursor: pointer;
+    }
+    .project-row:first-child { border-top: 1px solid #e2e8f0; }
+    .project-row:last-child { border-bottom: none; }
+    .project-row:hover .project-content h3 { color: var(--red); }
+    .project-num {
+      font-size: 0.75rem; font-weight: 700;
+      color: var(--red); letter-spacing: 0.08em;
+      padding-top: 3px; flex-shrink: 0;
+    }
+    .project-content h3 {
+      font-size: 1rem; font-weight: 700; color: var(--dark);
+      line-height: 1.4; display: flex; justify-content: space-between;
+      align-items: flex-start; gap: 12px; transition: color 0.2s; margin: 0;
+    }
+    .project-toggle {
+      font-size: 0.85rem; color: var(--red); flex-shrink: 0;
+      margin-top: 2px; transition: transform 0.3s ease; display: inline-block;
+    }
+    .project-row.open .project-toggle { transform: rotate(45deg); }
+    .project-body { display: none; padding-top: 0.8rem; }
+    .project-row.open .project-body { display: block; }
+    .project-content p { font-size: 0.88rem; color: var(--mid); line-height: 1.7; margin: 0; }
+    .project-members {
+      display: inline-block; margin-top: 0.6rem;
+      font-size: 0.78rem; color: #94a3b8; font-style: italic;
+    }
+
+    .recruit-section { background: white; }
+    .recruit-inner { max-width: 860px; margin: 0 auto; padding: 70px 5%; }
+    .recruit-inner > p {
+      color: var(--mid); line-height: 1.9; font-size: 1rem;
+      margin-bottom: 1rem; max-width: 680px;
+    }
+    .recruit-list { list-style: none; margin: 2rem 0; }
+    .recruit-list li {
+      display: flex; align-items: flex-start; gap: 12px; padding: 14px 0;
+      border-bottom: 1px solid #e2e8f0; font-size: 0.9rem; color: var(--mid); line-height: 1.6;
+    }
+    .recruit-list li:first-child { border-top: 1px solid #e2e8f0; }
+    .recruit-list strong { color: var(--dark); }
+    .check { color: var(--red); flex-shrink: 0; font-size: 0.8rem; margin-top: 3px; }
+    .recruit-btn {
+      display: inline-block; margin-top: 0.5rem; padding: 12px 32px;
+      background: var(--dark); color: white; border-radius: 40px;
+      font-size: 0.88rem; font-weight: 600; border: none;
+      cursor: pointer; transition: 0.3s;
+    }
+    .recruit-btn:hover { background: var(--red); }
+  </style>
+
+  <!-- 1. 页面标题 -->
+  <div class="page-header">
+    <h1>About Us</h1>
+  </div>
+
+  <!-- 2. 实验室介绍 + 地址 -->
+  <div class="section">
+    <div class="intro-body">
+      <p>
+        The <strong>Human AI-Interaction Lab (HAIL)</strong> is directed by
+        <a href="https://kwanminlee.com/" target="_blank" style="color: inherit; font-weight: 700; text-decoration: underline; text-underline-offset: 3px;">Kwan Min Lee</a>,
+        Korea Foundation Professor at NTU's Wee Kim Wee School of Communication and Information (WKWSCI).
+        Operating under the Asian Communication Research Centre (ACRC), HAIL investigates the
+        psychological and social dimensions of human–AI interaction — spanning user experience design,
+        explainable AI, immersive technologies, and AI ethics.
+      </p>
+      <div class="address-block">
+        <h3>How to find us</h3>
+        <p>
+          4F, Communication and Informatics Laboratory Asia<br/>
+          Wee Kim Wee School of Communication and Information<br/>
+          Nanyang Technological University<br/>
+          31 Nanyang Link, Singapore 637718
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. Projects -->
+  <div class="projects-section" id="projects">
+    <div class="projects-inner">
+      <p class="section-label">Research</p>
+      <h2 class="section-title">Current Projects</h2>
+      <div class="section-divider"></div>
+      <div class="projects-grid">
+
+        <div class="project-row">
+          <div class="project-num">01</div>
+          <div class="project-content">
+            <h3>LLM-Driven Inclusive UX Design (or Agentic AI for Inclusive Design)<span class="project-toggle">+</span></h3>
+            <div class="project-body">
+              <p>Although several everyday services such as sales/commerce or booking a taxi have been digitized to increase convenience, certain populations - such as older adults or those with visual impairments - continue to be excluded from these services due to inaccessible design. To mitigate this issue, this study explores the development of conversational agents that can interact with users and act based on their preferences or instructions (e.g. modifying the display of a website, or making an online purchase).</p>
+              <span class="project-members">Prof. Lee · Tang Kaiyuan · Shreya Gopi · Xie Li</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-row">
+          <div class="project-num">02</div>
+          <div class="project-content">
+            <h3>Impact of Chatbots' Linguistic Registers on Language Learning<span class="project-toggle">+</span></h3>
+            <div class="project-body">
+              <p>Traditionally, language acquisition involves the dedication of human teachers. Nowadays, people can utilize AI agents, a system that mimics human conversations to learn languages anytime and anywhere with less cost and stress. At this point, the study tends to examine the effectiveness of learning English by using AI agents.</p>
+              <span class="project-members">Prof. Lee · Xie Li · Dr. Won Young Chung · Pragya Chandel</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-row">
+          <div class="project-num">03</div>
+          <div class="project-content">
+            <h3>Hello, I'm Your ChatGPT Assistant: The Interactive Effects of AI Agent Style, User Type, Product Attributes in an E-Commerce Context<span class="project-toggle">+</span></h3>
+            <div class="project-body">
+              <p>AI-driven agents increase the conversational level in human-chatbot communication, which could influence people's online shopping experiences. The study examines how different types of AI agents who perform the role of salespersons could affect users' evaluation of the machine, products being sold, and their interaction experiences with the AI agents.</p>
+              <span class="project-members">Prof. Lee · Xie Li · Liu Jiaxi · Shreya Gopi</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-row">
+          <div class="project-num">04</div>
+          <div class="project-content">
+            <h3>The Motivation of Pro-environmental Behavior: Focusing on Psychological Ownership and Attachment<span class="project-toggle">+</span></h3>
+            <div class="project-body">
+              <p>One of the most important governmental policies is protecting the environment. I want it to insist the feelings of ownership of the green environment and attachment of it is useful way to protect the environment and encourage people to do pro-environmental behavior.</p>
+              <span class="project-members">Prof. Lee · Dr. Won Young Chung</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-row">
+          <div class="project-num">05</div>
+          <div class="project-content">
+            <h3>Alleviating Trolling Behavior Using Psychological Ownership<span class="project-toggle">+</span></h3>
+            <div class="project-body">
+              <p>As online trolling behavior is prevalent, I want it to suggest incepting the feeling of ownership will help trolls to alleviate such behavior online.</p>
+              <span class="project-members">Prof. Lee · Dr. Won Young Chung</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-row">
+          <div class="project-num">06</div>
+          <div class="project-content">
+            <h3>Investigating the Effects of Gender-Role Stereotyping on User Experience in the Context of Fintech Services<span class="project-toggle">+</span></h3>
+            <div class="project-body">
+              <p>The increasing use of virtual agents in fintech services comes with the challenge of gaining clients' trust and building a good relationship with them. The financial industry is associated with both stereotypically masculine traits, such as being dominant, as well as stereotypically feminine traits, such as being helpful and service-oriented. This study examines how the agent's sex representation (male or female), its conversation style (masculine or feminine), and the sex of the user (male or female) affect the evaluation of the virtual financial agent.</p>
+              <span class="project-members">Prof. Lee · Cui Min · Shreya Gopi</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-row">
+          <div class="project-num">07</div>
+          <div class="project-content">
+            <h3>Social Responses to Robo-Advisors<span class="project-toggle">+</span></h3>
+            <div class="project-body">
+              <p>The fintech industry is expanding and companies are increasingly using virtual agents in their client services. This study examines how the fintech agent's personality, user's personality, and market volatility interact to affect user experience.</p>
+              <span class="project-members">Prof. Lee · Yihan · Shreya Gopi</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-row">
+          <div class="project-num">08</div>
+          <div class="project-content">
+            <h3>News Explication<span class="project-toggle">+</span></h3>
+            <div class="project-body">
+              <p>This paper explains what are the dimensions of news in the context of AI. Additionally, it tries to shed on light on how we could understand the relationships between news, "fake news", and other types of information.</p>
+              <span class="project-members">Prof. Lee · Shreya Gopi</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-row">
+          <div class="project-num">09</div>
+          <div class="project-content">
+            <h3>AI Addiction<span class="project-toggle">+</span></h3>
+            <div class="project-body">
+              <p>This project focus on the emerging concern of AI addiction, examining its conceptual foundation and potential interventions to foster positive AI use. By analyzing the psychological and behavioral factors driving AI dependency, we identify key strategies to promote mindful use and balanced AI application.</p>
+              <span class="project-members">Prof. Lee · Yanqin Wu</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-row">
+          <div class="project-num">10</div>
+          <div class="project-content">
+            <h3>Chatbot Personality<span class="project-toggle">+</span></h3>
+            <div class="project-body">
+              <p>Focusing on personality similarity as a key factor in relationship building, the study explores how a chatbot has similar personality with user influence users' relationship perceptions toward the chatbot and evaluation of the app in a longitudinal context.</p>
+              <span class="project-members">Prof. Lee · Yanqin Wu</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-row">
+          <div class="project-num">11</div>
+          <div class="project-content">
+            <h3>Research on Failure Scenarios of Government AI Chatbot Services<span class="project-toggle">+</span></h3>
+            <div class="project-body">
+              <p>Despite the growing deployment of AI chatbots in government services to enhance accessibility and efficiency, their failure scenarios—such as misinformation delivery, empathy deficits, or procedural rigidity—pose critical risks to public trust and service equity. While existing studies predominantly focus on technical performance metrics (e.g., accuracy, response time), there is limited understanding of how citizens perceive and respond to AI failures in bureaucratic contexts. This study investigates failure scenarios of government AI chatbot services through a three-phase exploratory design.</p>
+              <span class="project-members">Prof. Lee · Haodong Sun</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-row">
+          <div class="project-num">12</div>
+          <div class="project-content">
+            <h3>VR Exergames Discontinuance Behavior<span class="project-toggle">+</span></h3>
+            <div class="project-body">
+              <p>With the widespread application of virtual reality (VR) exergames in health promotion, the issue of sustained usage after initial adoption has become increasingly prominent. While existing research predominantly focuses on explaining initial usage intentions through models such as the Technology Acceptance Model (TAM) or Flow Theory, the mechanisms underlying user discontinuance behavior remain underexplored. This study aims to employ a mixed-methods design to uncover the core drivers and their interactive effects influencing discontinuance behavior among VR exergame users.</p>
+              <span class="project-members">Prof. Lee · Haodong Sun</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-row">
+          <div class="project-num">13</div>
+          <div class="project-content">
+            <h3>GenAI Augmented Creativity for Narrative Composition: A Cognitive Neuroscience Perspective on Human-AI Collaboration in Creative Writing<span class="project-toggle">+</span></h3>
+            <div class="project-body">
+              <p>This project aims to investigate the efficacy of Llama 3.1 in enhancing the creativity of primary school students in Singapore. Using a mixed-methods approach, including fNIRS, questionnaires, and AI/human feedback, it will examine differences in narrative intelligence and cognitive processing between traditional and AI-assisted writing. The study will explore how AI can scaffold creativity without promoting overreliance while providing insights into its role in fostering critical thinking and originality in young writers.</p>
+              <span class="project-members">Prof. Lee · Prof. Samantha Chan (CCDS, NTU) · Prof. Vahid Aryadoust (NIE) · Pragya Chandel</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. RA Recruitment -->
+  <div class="recruit-section" id="join-us">
+    <div class="recruit-inner">
+      <p class="section-label">Join Us</p>
+      <h2 class="section-title">Research Assistant Recruitment</h2>
+      <div class="section-divider"></div>
+      <p>
+        HAIL welcomes motivated students and researchers passionate about human–AI
+        interaction. Positions are open to NTU undergraduates, postgraduates, and visiting scholars.
+      </p>
+      <ul class="recruit-list">
+        <li>
+          <span class="check">▸</span>
+          <span><strong>Background</strong> — Degree in Communication, Psychology, Computer Science, or related fields</span>
+        </li>
+        <li>
+          <span class="check">▸</span>
+          <span><strong>Interest</strong> — Curiosity in human-AI interaction, UX, or digital media research</span>
+        </li>
+        <li>
+          <span class="check">▸</span>
+          <span><strong>Skills</strong> — Familiarity with research methods; programming or statistics experience is a plus</span>
+        </li>
+        <li>
+          <span class="check">▸</span>
+          <span><strong>Commitment</strong> — Minimum 10 hours per week, at least one semester</span>
+        </li>
+      </ul>
+      <button class="recruit-btn" id="copyRAEmail">Apply via Email</button>
+    </div>
+  </div>
+
+  <script is:inline>
+    document.querySelectorAll('.project-row').forEach(row => {
+      row.addEventListener('click', () => {
+        row.classList.toggle('open');
+      });
+    });
+
+    document.getElementById('copyRAEmail').addEventListener('click', function () {
+      navigator.clipboard.writeText('kwanminlee@ntu.edu.sg').then(() => {
+        this.textContent = 'Copied!';
+        this.style.background = '#ce1126';
+        setTimeout(() => {
+          this.textContent = 'Apply via Email';
+          this.style.background = '';
+        }, 2000);
+      });
+    });
+  </script>
+
+</MainLayout>
