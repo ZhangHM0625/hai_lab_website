@@ -1,7 +1,7 @@
 ---
 import MainLayout from '../layouts/MainLayout.astro';
 
-const heroBgImage = `${import.meta.env.BASE_URL}/pub-bg.png`;
+const heroBgImage = `${import.meta.env.BASE_URL}/publications-hero.png`;
 
 // 数据结构已更新：使用 journalInfo 字段精确控制 APA 斜体格式
 const publications: any[] = [
@@ -675,13 +675,51 @@ const publications: any[] = [
       margin-top: 8px;
     }
 
+    /* ── 移动端适配 ── */
     @media (max-width: 768px) {
-      .pub-hero { height: 15vh; min-height: 200px; }
-      .pub-hero-title { font-size: 2.2rem; }
-      .pub-container { margin: 40px auto; }
-      .year-heading { font-size: 1.6rem; margin-bottom: 20px; }
-      .paper-title { font-size: 1.05rem; }
-      .paper-meta { font-size: 0.95rem; }
+
+      /* Hero */
+      .pub-hero { height: 28vh; min-height: 160px; padding: 0 5%; }
+      .pub-hero-title {
+        font-size: clamp(1.6rem, 3vw, 2.2rem);
+        font-weight: 800;
+        letter-spacing: -0.01em;
+        margin-bottom: 0.3rem;
+      }
+      .pub-hero-subtitle {
+        font-size: 0.8rem;
+        letter-spacing: 0.05em;
+      }
+
+      /* 内容区 */
+      .pub-container { margin: 36px auto; padding: 0 5%; }
+
+      /* 年份标题 */
+      .year-heading {
+        font-size: 1.4rem;
+        margin-bottom: 16px;
+        padding-bottom: 8px;
+      }
+
+      /* 论文条目 */
+      .paper-item { margin-bottom: 24px; }
+      .paper-title { font-size: 1rem; }
+      .paper-meta { font-size: 0.88rem; }
+      .btn-link { font-size: 0.85rem; }
+
+      /* Abstract 展开内容 */
+      .abstract-content {
+        font-size: 0.85rem;
+        padding: 12px 14px;
+      }
+
+      /* 年份区块间距 */
+      .year-section { margin-bottom: 40px; }
+    }
+
+    @media (max-width: 480px) {
+      .paper-title { font-size: 0.95rem; }
+      .paper-meta { font-size: 0.83rem; }
     }
   </style>
 

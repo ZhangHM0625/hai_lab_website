@@ -2,7 +2,7 @@
 import MainLayout from '../layouts/MainLayout.astro';
 
 // 背景图
-const heroBgImage = `${import.meta.env.BASE_URL}/people-bg.png`;
+const heroBgImage = `${import.meta.env.BASE_URL}/people-hero.png`;
 
 // 实验室现任成员数据 - 已全部补齐
 const peopleData = [
@@ -187,6 +187,41 @@ const alumniData = [
       .person-name { font-size: 1.25rem; }
       .person-title { font-size: 0.85rem; }
       .person-bio { font-size: 0.85rem; }
+    }
+  
+    /* ── 移动端适配 ── */
+    @media (max-width: 768px) {
+
+      /* Hero 标题对齐 About Us 大小 */
+      .people-hero { height: 28vh; min-height: 160px; padding: 0 5%; }
+      .people-hero-title {
+        font-size: clamp(1.6rem, 3vw, 2.2rem);
+        font-weight: 800;
+        letter-spacing: -0.01em;
+        margin-bottom: 0.3rem;
+      }
+      .people-hero-subtitle {
+        font-size: 0.8rem;
+        letter-spacing: 0.05em;
+      }
+
+      /* 成员卡片 */
+      .people-container { margin: 36px auto; padding: 0 5%; }
+      .person-card { flex-direction: column; gap: 16px; align-items: center; text-align: center; }
+      .person-left { flex: 0 0 auto; width: 140px; }
+      .person-icons { justify-content: center; }
+      .person-name { font-size: 1.2rem; }
+      .person-title { font-size: 0.85rem; }
+      .person-bio { font-size: 0.88rem; text-align: left; }
+
+      /* Alumni 网格 */
+      .alumni-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+      .alumni-name { font-size: 0.88rem; }
+    }
+
+    @media (max-width: 480px) {
+      .alumni-grid { grid-template-columns: repeat(2, 1fr); }
+      .person-left { width: 120px; }
     }
   </style>
 

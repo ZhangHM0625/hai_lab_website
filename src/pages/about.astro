@@ -95,6 +95,44 @@ import MainLayout from '../layouts/MainLayout.astro';
       cursor: pointer; transition: 0.3s;
     }
     .recruit-btn:hover { background: var(--red); }
+  
+    /* ── 移动端适配 ── */
+    @media (max-width: 768px) {
+
+      /* 页面标题间距 */
+      .page-header { padding: 36px 5% 0; }
+      .section { padding: 24px 5% 50px; }
+
+      /* Projects 区块 */
+      .projects-inner { padding: 50px 5%; }
+      .project-row {
+        grid-template-columns: 40px 1fr;
+        gap: 0 14px;
+        padding: 20px 0;
+      }
+      .project-num { font-size: 0.7rem; padding-top: 2px; }
+      .project-content h3 { font-size: 0.92rem; }
+      .project-body p { font-size: 0.83rem; }
+      .project-members { font-size: 0.72rem; }
+
+      /* Section 标题 */
+      .section-title { font-size: 1.4rem; }
+
+      /* RA Recruitment */
+      .recruit-inner { padding: 50px 5%; }
+      .recruit-inner > p { font-size: 0.88rem; }
+      .recruit-list li { font-size: 0.85rem; padding: 12px 0; }
+      .recruit-btn { width: 100%; text-align: center; }
+
+      /* Address block */
+      .address-block h3 { font-size: 1rem; }
+      .address-block p { font-size: 0.88rem; }
+    }
+
+    @media (max-width: 480px) {
+      .project-row { grid-template-columns: 36px 1fr; gap: 0 10px; }
+      .project-content h3 { font-size: 0.88rem; }
+    }
   </style>
 
   <!-- 1. 页面标题 -->
