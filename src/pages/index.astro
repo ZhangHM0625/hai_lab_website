@@ -237,21 +237,11 @@ const slogan = "Advancing Psychologically Aligned and Ethically Designed AI Syst
   </div>
 
   <script is:inline>
-    document.getElementById('copyEmail').addEventListener('click', function () {
-      const email = this.getAttribute('data-email');
-      navigator.clipboard.writeText(email).then(() => {
-        this.innerText = 'Copied!';
-        this.style.background = '#ce1126';
-        setTimeout(() => {
-          this.innerText = 'Email Us';
-          this.style.background = '#1e293b';
-        }, 2000);
-      });
-    });
-
-    document.querySelectorAll('.research-card').forEach(card => {
-      card.addEventListener('click', () => {
-        card.classList.toggle('open');
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.research-card:not(.dashed)').forEach(card => {
+        card.addEventListener('click', () => {
+          card.classList.toggle('open');
+        });
       });
     });
   </script>
