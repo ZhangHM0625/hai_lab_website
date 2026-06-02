@@ -1,17 +1,15 @@
 ---
 import MainLayout from '../layouts/MainLayout.astro';
 
-// 背景图
 const heroBgImage = `${import.meta.env.BASE_URL}/people-hero.png`;
 
-// 实验室现任成员数据 - 已全部补齐
 const peopleData = [
   {
     id: "kwan-min-lee",
     name: "Kwan Min Lee",
     title: "Korea Foundation Professor",
     image: `${import.meta.env.BASE_URL}/people/kwan-min-lee.jpg`,
-    website: "https://kwanminlee.com/", 
+    website: "https://kwanminlee.com/",
     scholar: "",
     bio: "Professor Lee is a leading scholar in UX research, HCI, and digital culture. Formerly a VP at Samsung Electronics, he has published extensively, led $12M+ in funded research, and directs the Human AI-Interaction Lab (HAIL)."
   },
@@ -20,8 +18,7 @@ const peopleData = [
     name: "Shreya Gopi",
     title: "Lab Member",
     image: `${import.meta.env.BASE_URL}/people/shreya-gopi.jpg`,
-    website: "",
-    scholar: "",
+    website: "", scholar: "",
     bio: "Shreya is a PhD candidate at the Wee Kim Wee School of Communication and Information. Her research centers on human-AI interaction and the psychological effects of information communication technologies. Currently, she is examining the effects of interacting with AI that attempts to explain how and why it made a decision or action (explainable AI or XAI), and how this impacts the interaction experience."
   },
   {
@@ -29,17 +26,15 @@ const peopleData = [
     name: "Li Xie",
     title: "Lab Member",
     image: `${import.meta.env.BASE_URL}/people/li-xie.jpg`,
-    website: "",
-    scholar: "",
-    bio: "Li Xie (Sherry) is a PhD student at Wee Kim Wee School of Communication and Information, Nanyang Technological University. Her research interests include how AI technology enabled systems (especially AI agents) are utilized in journalistic practice and AI's psychological effects on the audiences. Prior to her doctoral studies, Li obtained a Master's Degree in Translating and Interpreting at the Hong Kong Polytechnic Univerisity, and she used to work as a news editor in Hong Kong, China."
+    website: "", scholar: "",
+    bio: "Li Xie (Sherry) is a PhD student at Wee Kim Wee School of Communication and Information, Nanyang Technological University. Her research interests include how AI technology enabled systems (especially AI agents) are utilized in journalistic practice and AI's psychological effects on the audiences. Prior to her doctoral studies, Li obtained a Master's Degree in Translating and Interpreting at the Hong Kong Polytechnic University, and she used to work as a news editor in Hong Kong, China."
   },
   {
     id: "yanqin-wu",
     name: "Yanqin Wu",
     title: "Lab Member",
     image: `${import.meta.env.BASE_URL}/people/yanqin-wu.jpg`,
-    website: "",
-    scholar: "",
+    website: "", scholar: "",
     bio: "Yanqin (Yasmin) is a PhD student at Wee Kim Wee School of Communication and Information at Nanyang Technological University (NTU). Her research interests include human-AI interaction, health communication (especially in mental health and stress management), and media effects. Her research explores how digital media and technology influence psychological responses and attitudinal/behavioral change."
   },
   {
@@ -47,8 +42,7 @@ const peopleData = [
     name: "Heyongsun Im",
     title: "Lab Member",
     image: `${import.meta.env.BASE_URL}/people/heyongsun-im.jpg`,
-    website: "",
-    scholar: "",
+    website: "", scholar: "",
     bio: "Hyeongsun is a PhD student at the Wee Kim Wee School of Communication and Information, Nanyang Technological University. His research interests are Human-Computer Interaction (HCI), Human-AI Interaction and social simulation."
   },
   {
@@ -56,177 +50,157 @@ const peopleData = [
     name: "Keqi Chen",
     title: "Lab Member",
     image: `${import.meta.env.BASE_URL}/people/keqi-chen.jpg`,
-    website: "",
-    scholar: "",
-    bio: "Keqi Chen is a PhD student at School of Mechanical and Aerospace Engineering, Nanyang Technological University (NTU). He holds a Master’s degree in Design Informatics in University of Edinburgh (UoE). His research interests include Human Computer Interaction (HCI), Interaction Design (especially in Design of smart cockpit under autonomous driving), and User Experience. His research explores how to design the new human-vehicle interaction to cater to the new human-vehicle relationship under Autonomous Vehicle."
+    website: "", scholar: "",
+    bio: "Keqi Chen is a PhD student at School of Mechanical and Aerospace Engineering, Nanyang Technological University (NTU). He holds a Master's degree in Design Informatics at the University of Edinburgh. His research interests include HCI and Interaction Design, especially in the design of smart cockpits under autonomous driving, exploring how to design new human-vehicle interactions under Autonomous Vehicle contexts."
   },
   {
     id: "young-eun-kim",
     name: "Young Eun Kim",
     title: "Lab Member",
     image: `${import.meta.env.BASE_URL}/people/young-eun-kim.jpg`,
-    website: "",
-    scholar: "",
-    bio: "Young Eun Kim is a PhD candidate in department of Interaction Science at Sungkyunkwan University, South Korea. Her research interests include Human-Computer Interaction, Human-AI Interaction, and User Experience. She has conducted research on improving employees' work experiences and adressing social issues (education, mental health, and older adults) from multiple interdisciplinary perspectives. She is currently a Visiting Student at Wee Kim Wee School of Communication and Information, Nanyang Technological University, for one year."
+    website: "", scholar: "",
+    bio: "Young Eun Kim is a PhD candidate in the department of Interaction Science at Sungkyunkwan University, South Korea. Her research interests include Human-Computer Interaction, Human-AI Interaction, and User Experience. She is currently a Visiting Student at Wee Kim Wee School of Communication and Information, Nanyang Technological University, for one year."
   }
 ];
 
 const alumniData = [
-  { name: "Dr Kyung-Won Cho", image: `${import.meta.env.BASE_URL}/people/kyung-won-cho.jpg` },
+  { name: "Dr Kyung-Won Cho",   image: `${import.meta.env.BASE_URL}/people/kyung-won-cho.jpg` },
   { name: "Dr Won Young Chung", image: `${import.meta.env.BASE_URL}/people/won-young-chung.jpg` },
-  { name: "Pragya Chandel", image: `${import.meta.env.BASE_URL}/people/pragya-chandel.jpg` },
-  { name: "Kaiyuan Tang", image: `${import.meta.env.BASE_URL}/people/kaiyuan-tang.jpg` },
-  { name: "Jiaxi Liu", image: `${import.meta.env.BASE_URL}/people/jiaxi-liu.jpg` },
-  { name: "Haodong Sun", image: `${import.meta.env.BASE_URL}/people/haodong-sun.jpg` }
+  { name: "Pragya Chandel",     image: `${import.meta.env.BASE_URL}/people/pragya-chandel.jpg` },
+  { name: "Kaiyuan Tang",       image: `${import.meta.env.BASE_URL}/people/kaiyuan-tang.jpg` },
+  { name: "Jiaxi Liu",          image: `${import.meta.env.BASE_URL}/people/jiaxi-liu.jpg` },
+  { name: "Haodong Sun",        image: `${import.meta.env.BASE_URL}/people/haodong-sun.jpg` }
 ];
 ---
 
 <MainLayout title="People">
   <style>
-    /* 统一动画 */
     @keyframes slideInFromLeft {
-      0% { opacity: 0; transform: translateX(-30px); }
-      100% { opacity: 1; transform: translateX(0); }
+      from { opacity: 0; transform: translateX(-30px); }
+      to   { opacity: 1; transform: translateX(0); }
     }
 
-    /* --- Hero 区域：与 Publications 绝对对齐 --- */
+    /* --- Hero --- */
     .people-hero {
-      position: relative;
-      height: 20vh;
-      min-height: 300px;
-      display: flex;
-      align-items: center;
-      padding: 0 5%;
-      color: white;
-      background-color: #050505;
-      overflow: hidden;
+      position: relative; height: 20vh; min-height: 300px;
+      display: flex; align-items: center; padding: 0 5%;
+      color: white; background-color: #050505; overflow: hidden;
     }
     .people-hero-bg {
       position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-      background-size: cover; background-position: center; opacity: 0.5; z-index: 1;
+      background-size: cover; background-position: center; z-index: 1;
     }
     .people-hero-content {
       position: relative; z-index: 2;
-      max-width: 1000px; /* 锁定中轴线宽度 */
-      margin: 0 auto; width: 100%;
+      max-width: 1000px; margin: 0 auto; width: 100%;
       animation: slideInFromLeft 0.8s ease-out forwards;
     }
-    .people-hero-title { font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 800; margin-bottom: 0.1rem; letter-spacing: -0.01em; }
-    .people-hero-subtitle { font-size: 1.2rem; color: #cbd5e1; font-weight: 400; }
-
-    /* --- 内容容器：与 Publications 绝对对齐 --- */
-    .people-container { 
-      max-width: 900px; /* 锁定正文宽度 */
-      margin: 60px auto; 
-      padding: 0 20px; 
-      display: flex;
-      flex-direction: column;
+    .people-hero-title {
+      font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 800;
+      margin-bottom: 0.1rem; letter-spacing: -0.01em;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+    }
+    .people-hero-subtitle {
+      font-size: 1.2rem; color: #cbd5e1; font-weight: 400;
+      text-shadow: 0 1px 6px rgba(0,0,0,0.5);
     }
 
-    /* 成员列表布局 */
+    /* --- 内容区 --- */
+    .people-container {
+      max-width: 900px; margin: 60px auto;
+      padding: 0 20px; display: flex; flex-direction: column;
+    }
+
+    /* --- 成员卡片 --- */
     .current-members { display: flex; flex-direction: column; gap: 60px; margin-bottom: 80px; }
-    .person-card { display: flex; gap: 40px; opacity: 0; animation: slideInFromLeft 0.8s ease-out forwards; }
+    .person-card {
+      display: flex; gap: 40px;
+      opacity: 0; animation: slideInFromLeft 0.8s ease-out forwards;
+    }
     .person-card:nth-child(1) { animation-delay: 0.1s; }
     .person-card:nth-child(2) { animation-delay: 0.2s; }
     .person-card:nth-child(n+3) { animation-delay: 0.3s; }
 
-    .person-left { flex: 0 0 240px; display: flex; flex-direction: column; align-items: center; }
-    .person-image { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; background-color: #f1f5f9; border-radius: 4px; }
+    .person-left {
+      flex: 0 0 240px; display: flex;
+      flex-direction: column; align-items: center;
+    }
+    .person-image {
+      width: 100%; aspect-ratio: 4 / 5; object-fit: cover;
+      background-color: #f1f5f9; border-radius: 4px;
+    }
     .person-icons { margin-top: 15px; display: flex; gap: 15px; }
-    .icon-link { color: #64748b; transition: 0.2s; display: flex; align-items: center; }
+    .icon-link {
+      color: #64748b; transition: 0.2s; display: flex; align-items: center;
+    }
     .icon-link:hover { color: #003087; transform: translateY(-2px); }
 
     .person-right { flex: 1; }
-    .person-name { font-size: 1.4rem; font-weight: 700; color: #0f172a; padding-bottom: 12px; border-bottom: 1px solid #e2e8f0; margin-bottom: 15px; line-height: 1.2; }
-    .person-title { font-size: 1rem; font-weight: 600; text-transform: uppercase; color: #003087; margin-bottom: 12px; letter-spacing: 0.5px; }
+    .person-name {
+      font-size: 1.4rem; font-weight: 700; color: #0f172a;
+      padding-bottom: 12px; border-bottom: 1px solid #e2e8f0;
+      margin-bottom: 15px; line-height: 1.2;
+    }
+    .person-title {
+      font-size: 1rem; font-weight: 600; text-transform: uppercase;
+      color: #003087; margin-bottom: 12px; letter-spacing: 0.5px;
+    }
     .person-bio { font-size: 0.95rem; line-height: 1.6; color: #334155; }
 
-    /* 校友网格 */
-    .alumni-header { margin-top: 20px; margin-bottom: 15px; animation: slideInFromLeft 0.8s ease-out forwards; }
-    .alumni-title { font-size: 1.8rem; font-weight: 800; color: #000; border-bottom: 1px solid #e2e8f0; padding-bottom: 8px; width: 100%; }
-    .alumni-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; animation: slideInFromLeft 0.8s ease-out forwards; }
-    .alumni-card { background: white; border: 1px solid #e2e8f0; border-radius: 3px; overflow: hidden; }
-    .alumni-img-wrapper { width: 100%; aspect-ratio: 1 / 1; padding: 5px; background: #fff; }
+    /* --- Alumni --- */
+    .alumni-header { margin-top: 20px; margin-bottom: 15px; }
+    .alumni-title {
+      font-size: 1.8rem; font-weight: 800; color: #000;
+      border-bottom: 1px solid #e2e8f0; padding-bottom: 8px;
+    }
+    .alumni-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px;
+    }
+    .alumni-card {
+      background: white; border: 1px solid #e2e8f0;
+      border-radius: 3px; overflow: hidden;
+    }
+    .alumni-img-wrapper {
+      width: 100%; aspect-ratio: 1 / 1;
+      padding: 5px; background: #fff;
+    }
     .alumni-img { width: 100%; height: 100%; object-fit: cover; }
-    .alumni-name { font-size: 1rem; font-weight: 500; color: #0f172a; padding: 5px 10px 15px 10px; text-align: center; }
-
-    /* --- 响应式适配 (手机端重点调整) --- */
-    @media (max-width: 768px) {
-      .people-hero { height: 15vh; min-height: 200px; }
-      .people-hero-title { font-size: 2.5rem; }
-      .people-container { margin: 40px auto; }
-      
-      .person-card { flex-direction: column; gap: 20px; align-items: center; text-align: center; }
-      
-      /* 缩小手机端照片 */
-      .person-left { flex: 0 0 auto; width: 100%; max-width: 100px; }
-      .person-icons { justify-content: center; }
-      
-      /* 缩小文字并调整间距 */
-      .person-name { font-size: 1.2rem; padding-bottom: 10px; margin-bottom: 10px; }
-      .person-title { font-size: 1.1rem; margin-bottom: 12px; }
-      
-      /* Bio 文本框调整：限制宽度、居中对齐盒子、内部文字两端对齐 */
-      .person-bio { 
-        font-size: 1rem; 
-        max-width: 450px; 
-        width: 90%; 
-        margin: 0 auto; 
-        text-align: justify; 
-      }
-
-      .alumni-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; }
+    .alumni-name {
+      font-size: 1rem; font-weight: 500; color: #0f172a;
+      padding: 5px 10px 15px; text-align: center;
     }
-    
-    @media (max-width: 480px) {
-      .people-hero { height: 15vh; min-height: 200px; }
-      .people-hero-title { font-size: 2.2rem; }
-      
-      /* 极窄屏幕进一步缩小元素 */
-      .person-left { max-width: 160px; }
-      .person-name { font-size: 1.25rem; }
-      .person-title { font-size: 0.85rem; }
-      .person-bio { font-size: 0.85rem; }
-    }
-  
-    /* ── 移动端适配 ── */
+
+    /* --- 响应式 --- */
     @media (max-width: 768px) {
+      /* Hero */
+      .people-hero { height: 8vh; min-height: 180px; padding: 0 5%; }
+      .people-hero-bg { background-position:25% center; }
+      .people-hero-title { font-size: 1.5rem; margin-bottom: 0.3rem; }
+      .people-hero-subtitle { font-size: 0.95rem; letter-spacing: 0.05em; }
 
-      /* Hero 标题对齐 About Us 大小 */
-      .people-hero { height: 28vh; min-height: 160px; padding: 0 5%; }
-      .people-hero-title {
-        font-size: clamp(1.6rem, 3vw, 2.2rem);
-        font-weight: 800;
-        letter-spacing: -0.01em;
-        margin-bottom: 0.3rem;
-      }
-      .people-hero-subtitle {
-        font-size: 0.8rem;
-        letter-spacing: 0.05em;
-      }
-
-      /* 成员卡片 */
+      /* 成员区 */
       .people-container { margin: 36px auto; padding: 0 5%; }
+      .current-members { gap: 40px; margin-bottom: 60px; }
       .person-card { flex-direction: column; gap: 16px; align-items: center; text-align: center; }
       .person-left { flex: 0 0 auto; width: 140px; }
       .person-icons { justify-content: center; }
-      .person-name { font-size: 1.2rem; }
+      .person-name { font-size: 1.2rem; padding-bottom: 10px; margin-bottom: 10px; }
       .person-title { font-size: 0.85rem; }
       .person-bio { font-size: 0.88rem; text-align: left; }
 
-      /* Alumni 网格 */
+      /* Alumni */
       .alumni-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
       .alumni-name { font-size: 0.88rem; }
     }
 
     @media (max-width: 480px) {
-      .alumni-grid { grid-template-columns: repeat(2, 1fr); }
       .person-left { width: 120px; }
+      .alumni-grid { grid-template-columns: repeat(2, 1fr); }
     }
   </style>
 
   <header class="people-hero">
-    <div class="people-hero-bg" style={`background-image: url(${heroBgImage});`}></div>
+    <div class="people-hero-bg" style={`background-image: linear-gradient(to right, rgba(0,10,30,0.62) 20%, rgba(0,10,30,0.25) 60%, rgba(0,0,0,0.05) 100%), url(${heroBgImage});`}></div>
     <div class="people-hero-content">
       <h1 class="people-hero-title">People</h1>
       <p class="people-hero-subtitle">HAIL | Meet Our Team</p>
@@ -247,7 +221,7 @@ const alumniData = [
               )}
               {person.website && (
                 <a href={person.website} target="_blank" class="icon-link">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
                 </a>
               )}
             </div>
