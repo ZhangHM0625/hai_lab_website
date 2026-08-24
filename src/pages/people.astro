@@ -1,76 +1,28 @@
 ---
 import MainLayout from '../layouts/MainLayout.astro';
+import { sanityClient, type Alumnus, type Person } from '../lib/sanity';
 
 const heroBgImage = `${import.meta.env.BASE_URL}/people-hero.jpg`;
 
-const peopleData = [
-  {
-    id: "kwan-min-lee",
-    name: "Kwan Min Lee",
-    title: "Korea Foundation Professor",
-    image: `${import.meta.env.BASE_URL}/people/kwan-min-lee.jpg`,
-    website: "https://kwanminlee.com/",
-    scholar: "",
-    bio: "Professor Lee is a leading scholar in UX research, HCI, and digital culture. Formerly a VP at Samsung Electronics, he has published extensively, led $12M+ in funded research, and directs the Human AI-Interaction Lab (HAIL)."
+const { peopleData, alumniData } = await sanityClient.fetch<{
+  peopleData: Person[];
+  alumniData: Alumnus[];
+}>(`{
+  "peopleData": *[_type == "person"] | order(order asc) {
+    "id": _id,
+    name,
+    "title": jobTitle,
+    "image": photo.asset->url,
+    "website": coalesce(website, ""),
+    "scholar": coalesce(scholar, ""),
+    bio
   },
-  {
-    id: "shreya-gopi",
-    name: "Shreya Gopi",
-    title: "Lab Member",
-    image: `${import.meta.env.BASE_URL}/people/shreya-gopi.jpg`,
-    website: "", scholar: "",
-    bio: "Shreya is a PhD candidate at the Wee Kim Wee School of Communication and Information. Her research centers on human-AI interaction and the psychological effects of information communication technologies. Currently, she is examining the effects of interacting with AI that attempts to explain how and why it made a decision or action (explainable AI or XAI), and how this impacts the interaction experience."
-  },
-  {
-    id: "li-xie",
-    name: "Li Xie",
-    title: "Lab Member",
-    image: `${import.meta.env.BASE_URL}/people/li-xie.jpg`,
-    website: "", scholar: "",
-    bio: "Li Xie (Sherry) is a PhD student at Wee Kim Wee School of Communication and Information, Nanyang Technological University. Her research interests include how AI technology enabled systems (especially AI agents) are utilized in journalistic practice and AI's psychological effects on the audiences. Prior to her doctoral studies, Li obtained a Master's Degree in Translating and Interpreting at the Hong Kong Polytechnic University, and she used to work as a news editor in Hong Kong, China."
-  },
-  {
-    id: "yanqin-wu",
-    name: "Yanqin Wu",
-    title: "Lab Member",
-    image: `${import.meta.env.BASE_URL}/people/yanqin-wu.jpg`,
-    website: "", scholar: "",
-    bio: "Yanqin (Yasmin) is a PhD student at Wee Kim Wee School of Communication and Information at Nanyang Technological University (NTU). Her research interests include human-AI interaction, health communication (especially in mental health and stress management), and media effects. Her research explores how digital media and technology influence psychological responses and attitudinal/behavioral change."
-  },
-  {
-    id: "heyongsun-im",
-    name: "Heyongsun Im",
-    title: "Lab Member",
-    image: `${import.meta.env.BASE_URL}/people/heyongsun-im.jpg`,
-    website: "", scholar: "",
-    bio: "Hyeongsun is a PhD student at the Wee Kim Wee School of Communication and Information, Nanyang Technological University. His research interests are Human-Computer Interaction (HCI), Human-AI Interaction and social simulation."
-  },
-  {
-    id: "keqi-chen",
-    name: "Keqi Chen",
-    title: "Lab Member",
-    image: `${import.meta.env.BASE_URL}/people/keqi-chen.jpg`,
-    website: "", scholar: "",
-    bio: "Keqi Chen is a PhD student at School of Mechanical and Aerospace Engineering, Nanyang Technological University (NTU). He holds a Master's degree in Design Informatics at the University of Edinburgh. His research interests include HCI and Interaction Design, especially in the design of smart cockpits under autonomous driving, exploring how to design new human-vehicle interactions under Autonomous Vehicle contexts."
-  },
-  {
-    id: "young-eun-kim",
-    name: "Young Eun Kim",
-    title: "Lab Member",
-    image: `${import.meta.env.BASE_URL}/people/young-eun-kim.jpg`,
-    website: "", scholar: "",
-    bio: "Young Eun Kim is a PhD candidate in the department of Interaction Science at Sungkyunkwan University, South Korea. Her research interests include Human-Computer Interaction, Human-AI Interaction, and User Experience. She is currently a Visiting Student at Wee Kim Wee School of Communication and Information, Nanyang Technological University, for one year."
+  "alumniData": *[_type == "alumnus"] | order(order asc) {
+    "id": _id,
+    name,
+    "image": photo.asset->url
   }
-];
-
-const alumniData = [
-  { name: "Dr Kyung-Won Cho",   image: `${import.meta.env.BASE_URL}/people/kyung-won-cho.jpg` },
-  { name: "Dr Won Young Chung", image: `${import.meta.env.BASE_URL}/people/won-young-chung.jpg` },
-  { name: "Pragya Chandel",     image: `${import.meta.env.BASE_URL}/people/pragya-chandel.jpg` },
-  { name: "Kaiyuan Tang",       image: `${import.meta.env.BASE_URL}/people/kaiyuan-tang.jpg` },
-  { name: "Jiaxi Liu",          image: `${import.meta.env.BASE_URL}/people/jiaxi-liu.jpg` },
-  { name: "Haodong Sun",        image: `${import.meta.env.BASE_URL}/people/haodong-sun.jpg` }
-];
+}`);
 ---
 
 <MainLayout title="People">
