@@ -16,7 +16,7 @@ const publicationThemes = [
 
 export const publicationType = defineType({
   name: 'publication',
-  title: 'HAIL 论文 Publications',
+  title: 'HAIL/Publications',
   type: 'document',
   fields: [
     defineField({

@@ -2,7 +2,7 @@ import { defineField, defineType } from 'sanity';
 
 export const alumnusType = defineType({
   name: 'alumnus',
-  title: 'HAIL 校友 Alumni',
+  title: 'HAIL/People/Alumni',
   type: 'document',
   fields: [
     defineField({
