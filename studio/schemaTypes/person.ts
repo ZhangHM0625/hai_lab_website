@@ -2,7 +2,7 @@ import { defineField, defineType } from 'sanity';
 
 export const personType = defineType({
   name: 'person',
-  title: 'HAIL People',
+  title: 'HAIL/People/Current Members',
   type: 'document',
   fields: [
     defineField({
